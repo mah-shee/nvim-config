@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/usr/libexec'
+let g:netrw_dirhist_2='/Users/masatoshi/.config/nvim'
+let g:netrw_dirhist_3='/Users/masatoshi/.config/fish'
+let g:netrw_dirhist_4='/Users/masatoshi/.config/fish/functions'
+let g:netrw_dirhist_5='/Users/masatoshi/.config/fish'
+let g:netrw_dirhist_6='/Users/masatoshi/.config/fish/conf.d'
+let g:netrw_dirhist_7='/Users/masatoshi/.config/fish'
+let g:netrw_dirhist_8='/Users/masatoshi/.config/nvim'

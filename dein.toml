@@ -2,78 +2,15 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'tpope/vim-endwise'
-
-[[plugins]]
-repo = 'Townk/vim-autoclose'
-
-[[plugins]]
 repo = 'joshdick/onedark.vim'
 hook_add = '''
   colorscheme onedark
 '''
 
 [[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = ['javascript', 'javascript.jsx']
-
-[[plugins]]
-repo = 'mxw/vim-jsx'
-on_ft = ['javascript', 'javascript.jsx']
-
-[[plugins]]
-repo = 'moll/vim-node'
-on_ft = ['javascript']
-
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_add = '''
-  let g:airline_mode_map = {
-    \ '__' : '-',
-    \ 'n'  : 'N',
-    \ 'i'  : 'I',
-    \ 'R'  : 'R',
-    \ 'c'  : 'C',
-    \ 'v'  : 'V',
-    \ 'V'  : 'V',
-    \ 's'  : 'S',
-    \ 'S'  : 'S',
-    \ }
-  let g:airline_powerline_fonts = 1
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
-  let g:airline#extensions#virtualenv#enabled = 1
-  let g:airline#extensions#hunks#enabled = 0
-  let g:airline#extensions#ale#enabled = 1
-  let g:airline#extensions#ale#error_symbol = 'E:'
-  let g:airline#extensions#ale#warning_symbol = 'W:'
-'''
-
-[[plugins]]
-repo = 'w0rp/ale'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
-  source ~/.config/nvim/plugins/gitgutter.vim
-'''
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-hook_add = '''
-  source ~/.config/nvim/plugins/fugitive.vim
-'''
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
   source ~/.config/nvim/plugins/denite.vim
-'''
-
-[[plugins]]
-repo = 'osyo-manga/vim-anzu'
-hook_add = '''
-  source ~/.config/nvim/plugins/anzu.vim
 '''
 
 [[plugins]]

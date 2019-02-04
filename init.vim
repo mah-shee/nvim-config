@@ -36,3 +36,4 @@ filetype plugin indent on
 syntax enable
 
 :command UP UpdateRemotePlugins
+:command CH checkhealth

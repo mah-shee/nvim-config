@@ -48,3 +48,63 @@ hook_add = '''
   let g:airline#extensions#ale#error_symbol = 'E:'
   let g:airline#extensions#ale#warning_symbol = 'W:'
 '''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+    let g:indentLine_char = '¦'
+'''
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+[[plugins]]
+repo = 'billyvg/tigris.nvim'
+on_ft = ['javascript', 'javascript.jsx']
+hook_post_update = '''
+  let g:dein#plugin.build = './install.sh'
+'''
+hook_add = '''
+let g:tigris#enabled = 1
+let g:tigris#on_the_fly_enabled = 1
+let g:tigris#delay = 300
+'''
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
+on_ft = ['javascript', 'javascript.jsx']
+
+[[plugins]]
+repo = 'moll/vim-node'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'w0rp/ale'
+on_source = ['lightline.vim']
+hook_add = '''
+  let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
+  let g:ale_echo_msg_format = '[%linter%] %s'
+  nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+  nmap <silent> <C-j> <Plug>(ale_next_wrap)
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  source ~/.config/nvim/plugins/gitgutter.vim
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+  source ~/.config/nvim/plugins/fugitive.vim
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+hook_add = '''
+  source ~/.config/nvim/plugins/anzu.vim
+'''

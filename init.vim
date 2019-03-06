@@ -16,7 +16,7 @@ set textwidth=0
 set colorcolumn=80
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 " for Python
-let g:python_host_prog = $PYENV_ROOT.'/shims/python2'
+let g:python_host_prog = $PYENV_ROOT.'/versions/2.7.15/envs/neovim2/bin/python'
 let g:python3_host_prog = $PYENV_ROOT.'/shims/python3'
 
 if &compatible

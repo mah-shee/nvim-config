@@ -15,6 +15,8 @@ set wrap
 set textwidth=0 
 set colorcolumn=80
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+" for deoplete to leave the preview window always closed
+set completeopt-=preview
 " for Python
 let g:python_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^2')/bin/python")
 let g:python3_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^3')/bin/python")

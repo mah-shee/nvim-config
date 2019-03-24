@@ -21,6 +21,12 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+    let g:indentLine_char = '¦'
+'''
+
+[[plugins]]
 repo = 'zchee/deoplete-jedi'
 on_ft = 'python'
 hook_add = '''
@@ -52,3 +58,22 @@ hook_add = '''
   let g:airline#extensions#ale#error_symbol = 'E:'
   let g:airline#extensions#ale#warning_symbol = 'W:'
 '''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  source ~/.config/nvim/plugins/gitgutter.vim
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+  source ~/.config/nvim/plugins/fugitive.vim
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+hook_add = '''
+  source ~/.config/nvim/plugins/anzu.vim
+'''
+

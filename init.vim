@@ -16,6 +16,10 @@ set wrap
 set textwidth=0 
 set colorcolumn=80
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+inoremap jj <Esc>
+nnoremap j gj
+nnoremap k gk
+tnoremap <Esc> <C-\><C-n>
 " for deoplete to leave the preview window always closed
 set completeopt-=preview
 " for Python
@@ -40,3 +44,4 @@ syntax enable
 
 :command UP UpdateRemotePlugins
 :command CH checkhealth
+:command Tnew tabnew | terminal

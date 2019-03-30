@@ -2,7 +2,6 @@
 repo = 'scrooloose/nerdtree'
 hook_add = '''
   nnoremap <silent><C-n> :NERDTreeToggle<CR>
-  autocmd vimenter * NERDTree
   let NERDTreeShowHidden = 1
 '''
 

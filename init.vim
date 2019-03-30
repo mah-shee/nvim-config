@@ -20,6 +20,7 @@ inoremap jj <Esc>
 nnoremap j gj
 nnoremap k gk
 tnoremap <Esc> <C-\><C-n>
+autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
 " for deoplete to leave the preview window always closed
 set completeopt-=preview
 " for Python

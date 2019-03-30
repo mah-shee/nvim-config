@@ -61,18 +61,21 @@ hook_add = '''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+on_path = '.*'
 hook_add = '''
   source ~/.config/nvim/plugins/gitgutter.vim
 '''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+on_path = '.*'
 hook_add = '''
   source ~/.config/nvim/plugins/fugitive.vim
 '''
 
 [[plugins]]
 repo = 'osyo-manga/vim-anzu'
+on_path = '.*'
 hook_add = '''
   source ~/.config/nvim/plugins/anzu.vim
 '''

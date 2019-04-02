@@ -7,11 +7,11 @@ hook_add = '''
 
 [[plugins]]
 repo = 'tpope/vim-endwise'
-on_i = 1
+on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'Townk/vim-autoclose'
-on_i = 1
+on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'billyvg/tigris.nvim'

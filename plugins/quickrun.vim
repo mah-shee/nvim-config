@@ -1,7 +1,7 @@
 let g:quickrun_config = {
     \ '_' : {
         \ 'runner' : 'vimproc',
-        \ 'runner/vimproc/updatetime' : 60,
+        \ 'runner/vimproc/updatetime' : 40,
         \ 'outputter' : 'error',
         \ 'outputter/error/success' : 'buffer',
         \ 'outputter/error/error'   : 'quickfix',

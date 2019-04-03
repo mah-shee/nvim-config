@@ -6,12 +6,64 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
+hook_add = '''
+  let g:deoplete#sources#jedi#python_path = system("echo -n (pyenv root)/versions/(pyenv global | grep '^3')/bin/python")
+  let g:deoplete#sources#jedi#server_timeout=100
+  let g:deoplete#sources#jedi#statement_length=100
+  let g:jedi#completions_enabled = 0
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+on_event = 'InsertEnter'
+on_ft = ['snippet']
+depends = ['neosnippet-snippets']
+hook_source = '''
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+on_path = '*.'
+hook_add = '''
+  source ~/.config/nvim/plugins/quickrun.vim
+'''
+
+[[plugins]]
 repo = 'tpope/vim-endwise'
 on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'Townk/vim-autoclose'
 on_event = 'InsertEnter'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+on_path = '.*'
+hook_add = '''
+  source ~/.config/nvim/plugins/gitgutter.vim
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+on_path = '.*'
+hook_add = '''
+  source ~/.config/nvim/plugins/fugitive.vim
+'''
+
+[[plugins]]
+repo = 'osyo-manga/vim-anzu'
+on_path = '.*'
+hook_add = '''
+  source ~/.config/nvim/plugins/anzu.vim
+'''
 
 [[plugins]]
 repo = 'billyvg/tigris.nvim'

@@ -5,7 +5,7 @@ let g:quickrun_config = {
         \ 'outputter' : 'error',
         \ 'outputter/error/success' : 'buffer',
         \ 'outputter/error/error'   : 'quickfix',
-        \ 'outputter/buffer/split' : ':vertical',
+        \ 'outputter/buffer/split' : 'vertical',
     \ }
 \}
 

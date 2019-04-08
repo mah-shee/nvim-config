@@ -17,15 +17,17 @@ hook_add = '''
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
-repo = 'joshdick/onedark.vim'
+repo = 'sheerun/vim-polyglot'
 hook_add = '''
-  colorscheme onedark
+let g:polyglot_disabled = ['markdown', 'tsx', 'typescript']
 '''
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
+repo = 'ayu-theme/ayu-vim'
 hook_add = '''
-    let g:indentLine_char = '¦'
+  set termguicolors
+  let ayucolor="mirage"
+  colorscheme ayu
 '''
 
 [[plugins]]

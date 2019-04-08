@@ -48,7 +48,7 @@ repo = 'tpope/vim-endwise'
 on_event = 'InsertEnter'
 
 [[plugins]]
-repo = 'Townk/vim-autoclose'
+repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
 
 [[plugins]]

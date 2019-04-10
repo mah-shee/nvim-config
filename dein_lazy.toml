@@ -38,7 +38,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
-on_path = '*.'
+on_path = '.*'
 hook_add = '''
     let g:indentLine_char = '¦'
 '''

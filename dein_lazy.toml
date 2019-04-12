@@ -9,7 +9,6 @@ hook_add = '''
 repo = 'zchee/deoplete-jedi'
 on_ft = 'python'
 hook_add = '''
-  let g:deoplete#sources#jedi#python_path = system("echo -n (pyenv root)/versions/(pyenv global | grep '^3')/bin/python")
   let g:deoplete#sources#jedi#server_timeout=100
   let g:deoplete#sources#jedi#statement_length=100
   let g:jedi#completions_enabled = 0

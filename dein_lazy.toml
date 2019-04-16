@@ -54,6 +54,10 @@ repo = 'tpope/vim-endwise'
 on_event = 'InsertEnter'
 
 [[plugins]]
+repo = 'tpope/vim-surround'
+on_event = 'InsertEnter'
+
+[[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
 

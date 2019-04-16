@@ -43,6 +43,13 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'sjl/gundo.vim'
+on_path = '.*'
+hook_add = '''
+nnoremap <F5> :GundoToggle<CR>
+'''
+
+[[plugins]]
 repo = 'tpope/vim-endwise'
 on_event = 'InsertEnter'
 

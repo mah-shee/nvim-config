@@ -4,13 +4,13 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
-  source ~/.config/nvim/plugins/denite.vim
+source ~/.config/nvim/plugins/denite.vim
 '''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
-  source ~/.config/nvim/plugins/deoplete.vim
+source ~/.config/nvim/plugins/deoplete.vim
 '''
 
 [[plugins]]
@@ -25,9 +25,9 @@ let g:polyglot_disabled = ['markdown', 'tsx', 'typescript']
 [[plugins]]
 repo = 'ayu-theme/ayu-vim'
 hook_add = '''
-  set termguicolors
-  let ayucolor="dark"
-  colorscheme ayu
+set termguicolors
+let ayucolor="dark"
+colorscheme ayu
 '''
 
 [[plugins]]
@@ -37,5 +37,5 @@ build = 'make'
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-  source ~/.config/nvim/plugins/airline.vim
+source ~/.config/nvim/plugins/airline.vim
 '''

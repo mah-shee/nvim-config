@@ -9,12 +9,18 @@ source ~/.config/nvim/plugins/denite.vim
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+depends = 'context_filetype.vim'
+on_event = 'InsertEnter'
 hook_add = '''
 source ~/.config/nvim/plugins/deoplete.vim
+call deoplete#enable()
 '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'

@@ -25,25 +25,29 @@ function! s:source_rc(path, ...) abort
   endtry
 endfunction
 
+if has('vim_starting')
+  call s:source_rc('init.rc.vim')
+endif
+
+call s:source_rc('dein.rc.vim')
+
+
+if has('vim_starting') && !empty(argv())
+  call vimrc#on_filetype()
+endif
+
+if !has('vim_starting')
+  call dein#call_hook('source')
+  call dein#call_hook('post_source')
+endif
+
+call s:source_rc('options.rc.vim')
+call s:source_rc('keymap.rc.vim')
+
 if has('nvim')
   call s:source_rc('neovim.rc.vim')
 endif
 
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-  call dein#load_toml('~/.config/nvim/dein.toml', {'lazy': 0})
-  call dein#load_toml('~/.config/nvim/dein_lazy.toml', {'lazy': 1})
-  call dein#end()
-  call dein#save_state()
-endif
-if dein#check_install()
-  call dein#install()
-endif
-
 filetype plugin indent on
 syntax enable
-
-call s:source_rc('options.rc.vim')
-call s:source_rc('keymap.rc.vim')
+set secure

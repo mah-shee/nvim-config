@@ -8,6 +8,11 @@ let g:jedi#completions_enabled = 0
 '''
 
 [[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_event = 'TextYankPost'
+on_source = ['denite.nvim']
+
+[[plugins]]
 repo = 'carlitux/deoplete-ternjs'
 on_ft = ['javascript', 'javascript.jsx', 'jsx']
 build = 'npm install -g tern'
@@ -18,6 +23,33 @@ let g:deoplete#sources#ternjs#types = 1
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
+hook_source = 'source ~/.config/nvim/plugins/denite-source.vim'
+hook_add = 'source ~/.config/nvim/plugins/denite-add.vim'
+
+[plugins.ftplugin]
+denite = '''
+" Define mappings
+nnoremap <silent><buffer><expr> <CR>
+\ denite#do_map('do_action')
+nnoremap <silent><buffer><expr> a
+\ denite#do_map('choose_action')
+nnoremap <silent><buffer><expr> d
+\ denite#do_map('do_action', 'delete')
+nnoremap <silent><buffer><expr> p
+\ denite#do_map('do_action', 'preview')
+nnoremap <silent><buffer><expr> q
+\ denite#do_map('quit')
+nnoremap <silent><buffer><expr> '
+\ denite#do_map('quick_move')
+nnoremap <silent><buffer><expr> i
+\ denite#do_map('open_filter_buffer')
+nnoremap <silent><buffer><expr> <Space>
+\ denite#do_map('toggle_select').'j'
 '''
 
 [[plugins]]
@@ -112,6 +144,10 @@ nnoremap <silent><buffer><expr> <Tab> winnr('$') != 1 ?
 \ ':<C-u>wincmd w<CR>' :
 \ ':<C-u>Defx -buffer-name=temp -split=vertical<CR>'
 '''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
@@ -215,3 +251,10 @@ on_ft = ['python']
 [[plugins]]
 repo = 'rhysd/vim-gfm-syntax'
 on_ft = 'markdown'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+on_path = '.*'
+hook_add = '''
+source ~/.config/nvim/plugins/easymotion.vim
+'''

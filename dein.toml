@@ -2,12 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-source ~/.config/nvim/plugins/denite.vim
-'''
-
-[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
@@ -17,10 +11,13 @@ call deoplete#enable()
 '''
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'Shougo/neoyank.vim'
+on_event = 'TextYankPost'
+on_source = ['denite.nvim']
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
+repo = 'Shougo/neosnippet-snippets'
+
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'

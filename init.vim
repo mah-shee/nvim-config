@@ -24,6 +24,15 @@ function! s:source_rc(path, ...) abort
     endif
   endtry
 endfunction
+" Set augroup.
+augroup MyAutoCmd
+  autocmd!
+  autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *?
+        \ call vimrc#on_filetype()
+  autocmd CursorHold *.toml syntax sync minlines=300
+augroup END
+augroup filetypedetect
+augroup END
 
 if has('vim_starting')
   call s:source_rc('init.rc.vim')
@@ -48,6 +57,4 @@ if has('nvim')
   call s:source_rc('neovim.rc.vim')
 endif
 
-filetype plugin indent on
-syntax enable
 set secure

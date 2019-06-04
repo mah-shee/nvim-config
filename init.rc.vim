@@ -83,7 +83,7 @@ endif
 
 " Disable packpath
 set packpath=
-
+set nohlsearch
 
 "---------------------------------------------------------------------------
 " Disable default plugins

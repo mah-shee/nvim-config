@@ -18,6 +18,8 @@ on_source = ['denite.nvim']
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
+[[plugins]]
+repo = 'thinca/vim-themis'
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'

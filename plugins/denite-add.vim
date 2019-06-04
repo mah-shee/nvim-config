@@ -5,7 +5,7 @@ xnoremap <silent> ;r
             \ :<C-u>Denite -default-action=replace -buffer-name=register
             \ register neoyank<CR>
 nnoremap <silent> [Window]<Space>
-            \ :<C-u>Denite file/rec:~/.vim/rc<CR>
+            \ :<C-u>Denite file/rec:~/.config/nvim<CR>
 nnoremap <expr> / line('$') > 10000 ? '/' :
             \ ":\<C-u>Denite -buffer-name=search -start-filter line\<CR>"
 nnoremap <expr> n line('$') > 10000 ? 'n' :
@@ -27,7 +27,7 @@ nnoremap <silent> ;g :<C-u>Denite -buffer-name=search
             \ -no-empty grep<CR>
 nnoremap <silent> ft :<C-u>Denite filetype<CR>
 nnoremap <silent> <C-t> :<C-u>Denite
-            \ -cursor-pos=`tabpagenr()-1` deol:zsh<CR>
+            \ -cursor-pos=`tabpagenr()-1` deol:fish<CR>
 nnoremap <silent> <C-k> :<C-u>Denite change jump<CR>
 nnoremap <silent> <C-h> :<C-u>DeniteCursorWord help<CR>
 nnoremap <silent> [Space]gs :<C-u>Denite gitstatus<CR>

@@ -23,6 +23,7 @@ autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
 " for deoplete to leave the preview window always closed
 set completeopt-=preview
 set conceallevel=0
+set nohlsearch
 autocmd InsertLeave * set nopaste
 
 " Insert mode keymappings:

@@ -147,7 +147,6 @@ nnoremap <silent><buffer><expr> <Tab> winnr('$') != 1 ?
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/deol.nvim'
@@ -198,8 +197,8 @@ nnoremap <buffer><silent> [Space]gA
 [[plugins]]
 repo = 'Shougo/neosnippet'
 on_event = 'InsertEnter'
-on_ft = ['snippet']
-depends = ['neosnippet-snippets']
+on_ft = 'snippet'
+depends = ['neosnippet-snippets', 'context_filetype.vim']
 hook_source = '''
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -210,6 +209,9 @@ endif
 '''
 
 [[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
 repo = 'chemzqm/denite-git'
 
 [[plugins]]
@@ -217,6 +219,14 @@ repo = 'thinca/vim-quickrun'
 on_path = '.*'
 hook_source = '''
 source ~/.config/nvim/plugins/quickrun.vim
+'''
+
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+on_map = {n = '<Plug>'}
+hook_add = '''
+  nmap <silent>j <Plug>(accelerated_jk_gj)
+  nmap <silent>k <Plug>(accelerated_jk_gk)
 '''
 
 [[plugins]]
@@ -259,12 +269,12 @@ hook_source = '''
 source ~/.config/nvim/plugins/fugitive.vim
 '''
 
-[[plugins]]
-repo = 'osyo-manga/vim-anzu'
-on_path = '.*'
-hook_add = '''
-source ~/.config/nvim/plugins/anzu.vim
-'''
+# [[plugins]]
+# repo = 'osyo-manga/vim-anzu'
+# on_path = '.*'
+# hook_add = '''
+# source ~/.config/nvim/plugins/anzu.vim
+# '''
 
 [[plugins]]
 repo = 'billyvg/tigris.nvim'

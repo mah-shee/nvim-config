@@ -1,29 +1,7 @@
-set number
-set autoindent
-set tabstop=8
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set smarttab
-set shiftround
-set splitright
-set cursorline
-set clipboard=unnamed
-set hls
-set list
-set wrap
-set textwidth=0 
-set colorcolumn=80
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 inoremap jj <Esc>
-nnoremap j gj
-nnoremap k gk
 tnoremap <Esc> <C-\><C-n>
 autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
 " for deoplete to leave the preview window always closed
-set completeopt-=preview
-set conceallevel=0
-set nohlsearch
 autocmd InsertLeave * set nopaste
 
 " Insert mode keymappings:
@@ -32,6 +10,17 @@ inoremap <C-t>  <C-v><TAB>
 " Enable undo <C-w> and <C-u>.
 inoremap <C-w>  <C-g>u<C-w>
 inoremap <C-u>  <C-g>u<C-u>
+
+" Use ',' instead of '\'.
+" Use <Leader> in global plugin.
+let g:mapleader = ','
+" Use <LocalLeader> in filetype plugin.
+let g:maplocalleader = 'm'
+
+" Release keymappings for plug-in.
+nnoremap ;  <Nop>
+nnoremap m  <Nop>
+nnoremap ,  <Nop>
 
 " [Space]: Other useful commands
 " Smart space mapping.

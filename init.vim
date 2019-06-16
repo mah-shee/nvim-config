@@ -34,8 +34,6 @@ augroup END
 augroup filetypedetect
 augroup END
 
-call s:source_rc('keymap.rc.vim')
-
 if has('vim_starting')
   call s:source_rc('init.rc.vim')
 endif
@@ -52,10 +50,11 @@ if !has('vim_starting')
   call dein#call_hook('post_source')
 endif
 
-if has('nvim')
+if !has('vim_starting') && has('nvim')
   call s:source_rc('neovim.rc.vim')
 endif
 
 call s:source_rc('options.rc.vim')
+call s:source_rc('keymap.rc.vim')
 
 set secure

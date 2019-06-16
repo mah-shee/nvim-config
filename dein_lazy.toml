@@ -331,3 +331,6 @@ hook_post_update = 'call fruzzy#install()'
 [[plugins]]
 repo = 'sakhnik/nvim-gdb'
 on_ft = ['python']
+
+[[plugins]]
+repo = 'ncm2/float-preview.nvim.git'

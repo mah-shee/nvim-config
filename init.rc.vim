@@ -41,16 +41,6 @@ endif
 " Use English interface.
 language message C
 
-" Use ',' instead of '\'.
-" Use <Leader> in global plugin.
-let g:mapleader = ','
-" Use <LocalLeader> in filetype plugin.
-let g:maplocalleader = 'm'
-
-" Release keymappings for plug-in.
-nnoremap ;  <Nop>
-nnoremap m  <Nop>
-nnoremap ,  <Nop>
 
 if IsWindows()
   " Exchange path separator.
@@ -83,7 +73,6 @@ endif
 
 " Disable packpath
 set packpath=
-set nohlsearch
 
 "---------------------------------------------------------------------------
 " Disable default plugins

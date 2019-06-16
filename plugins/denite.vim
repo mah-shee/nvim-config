@@ -12,7 +12,7 @@ nnoremap <expr> ;n line('$') > 10000 ? 'n' :
             \ ":\<C-u>Denite -buffer-name=search -resume -refresh -no-start-filter\<CR>"
 nnoremap <expr> * line('$') > 10000 ? '*' :
             \ ":\<C-u>DeniteCursorWord -buffer-name=search line\<CR>"
-nnoremap <silent> [Window]s :<C-u>Denite file/point file/old
+nnoremap <silent> [Window]s :<C-u>Denite file/point
             \ -sorters=sorter/rank
             \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`
             \ file file:new<CR>

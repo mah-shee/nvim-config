@@ -1,4 +1,4 @@
-:command! UP UpdateRemotePlugins
+:command! UP call dein#remote_plugins()
 :command! CH checkhealth
 :command! Tnew tabnew | terminal
 

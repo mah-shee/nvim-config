@@ -297,12 +297,12 @@ on_ft = 'html'
 repo='mattn/emmet-vim'
 on_ft = 'html'
 
-[[plugins]]
-repo = 'w0rp/ale'
-on_ft = ['javascript']
-hook_post_source = '''
-source ~/.config/nvim/plugins/ale.vim
-'''
+# [[plugins]]
+# repo = 'w0rp/ale'
+# on_ft = ['javascript']
+# hook_post_source = '''
+# source ~/.config/nvim/plugins/ale.vim
+# '''
 
 [[plugins]]
 repo = 'Vimjas/vim-python-pep8-indent'

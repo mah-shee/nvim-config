@@ -6,9 +6,6 @@ if has('vim_starting') && empty(argv())
   syntax off
 endif
 
-let g:python_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^2')/bin/python")
-let g:python3_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^3')/bin/python")
-
 if exists('&inccommand')
   set inccommand=nosplit
 endif

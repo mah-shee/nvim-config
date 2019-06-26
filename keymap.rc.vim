@@ -17,6 +17,9 @@ let g:mapleader = ','
 " Use <LocalLeader> in filetype plugin.
 let g:maplocalleader = 'm'
 
+let g:python_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^2')/bin/python")
+let g:python3_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^3')/bin/python")
+
 " Release keymappings for plug-in.
 nnoremap ;  <Nop>
 nnoremap m  <Nop>

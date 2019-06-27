@@ -18,7 +18,7 @@
   \ }
   
   let g:ale_fixers = {
-  \ 'python': ['autopep8', 'black', 'isort'],
+  \ 'python': ['yapf', 'autopep8', 'black', 'isort'],
   \ }
 
   " 各ツールの実行オプションを変更してPythonパスを固定

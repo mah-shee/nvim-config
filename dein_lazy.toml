@@ -1,30 +1,10 @@
-# [[plugins]]
-# repo = 'zchee/deoplete-jedi'
-# on_ft = 'python'
-# hook_source = '''
-# let g:deoplete#sources#jedi#server_timeout=100
-# let g:deoplete#sources#jedi#statement_length=100
-# let g:jedi#completions_enabled = 0
-# let g:deoplete#sources#jedi#python_path = system("echo -n (pyenv root)/versions/(pyenv local | grep '^3')/bin/python")
-# '''
-
 [[plugins]]
-repo = 'Shougo/neoyank.vim'
-on_event = 'TextYankPost'
-on_source = ['denite.nvim']
-
-[[plugins]]
-repo = 'carlitux/deoplete-ternjs'
-on_ft = ['javascript', 'javascript.jsx', 'jsx']
-build = 'npm install -g tern'
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
 hook_source = '''
-let g:deoplete#sources#ternjs#filetypes = ['jsx', 'javascript.jsx']
-let g:deoplete#sources#ternjs#depths = 1
-let g:deoplete#sources#ternjs#types = 1
-" Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-'''
+source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
+''' 
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -52,6 +32,45 @@ nnoremap <silent><buffer><expr> i
 nnoremap <silent><buffer><expr> <Space>
 \ denite#do_map('toggle_select').'j'
 '''
+
+[[plugins]]
+repo = 'ncm2/float-preview.nvim'
+on_source = 'deoplete.nvim'
+if = 'has("nvim")'
+hook_source = '''
+let g:float_preview#docked = 0
+let g:float_preview#max_width = 60
+let g:float_preview#max_height = 20
+'''
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_event = 'TextYankPost'
+on_source = ['denite.nvim']
+
+# [[plugins]]
+# repo = 'zchee/deoplete-jedi'
+# on_ft = 'python'
+# hook_source = '''
+# let g:deoplete#sources#jedi#server_timeout=100
+# let g:deoplete#sources#jedi#statement_length=100
+# let g:jedi#completions_enabled = 0
+# let g:deoplete#sources#jedi#python_path = system("echo -n (pyenv root)/versions/(pyenv local | grep '^3')/bin/python")
+# '''
+
+[[plugins]]
+repo = 'carlitux/deoplete-ternjs'
+on_ft = ['javascript', 'javascript.jsx', 'jsx']
+build = 'npm install -g tern'
+hook_source = '''
+let g:deoplete#sources#ternjs#filetypes = ['jsx', 'javascript.jsx']
+let g:deoplete#sources#ternjs#depths = 1
+let g:deoplete#sources#ternjs#types = 1
+" Use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+'''
+
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
@@ -145,9 +164,6 @@ nnoremap <silent><buffer><expr> <Tab> winnr('$') != 1 ?
 \ ':<C-u>wincmd w<CR>' :
 \ ':<C-u>Defx -buffer-name=temp -split=vertical<CR>'
 '''
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/deol.nvim'
@@ -297,12 +313,12 @@ on_ft = 'html'
 repo='mattn/emmet-vim'
 on_ft = 'html'
 
-# [[plugins]]
-# repo = 'w0rp/ale'
-# on_ft = ['javascript']
-# hook_post_source = '''
-# source ~/.config/nvim/plugins/ale.vim
-# '''
+[[plugins]]
+repo = 'w0rp/ale'
+on_ft = ['python', 'javascript']
+hook_post_source = '''
+source ~/.config/nvim/plugins/ale.vim
+'''
 
 [[plugins]]
 repo = 'Vimjas/vim-python-pep8-indent'

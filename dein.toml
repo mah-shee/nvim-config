@@ -4,11 +4,13 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
-on_event = 'InsertEnter'
-hook_add = '''
+hook_source = '''
 source ~/.config/nvim/plugins/deoplete.vim
 call deoplete#enable()
 '''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
@@ -44,11 +46,3 @@ repo = 'vim-airline/vim-airline'
 hook_add = '''
 source ~/.config/nvim/plugins/airline.vim
 '''
-
-[[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-hook_add = '''
-source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
-''' 

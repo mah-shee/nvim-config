@@ -33,12 +33,6 @@ if s:vimrc_local !=# ''
         \ ['deoplete-*', '*.nvim'])
 endif
 
-if dein#tap('deoplete.nvim') && has('nvim')
-  call dein#disable('neocomplete.vim')
-endif
-call dein#disable('neobundle.vim')
-call dein#disable('neopairs.vim')
-
 call dein#end()
 call dein#save_state()
 

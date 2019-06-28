@@ -42,7 +42,6 @@ endif
 
 call s:source_rc('dein.rc.vim')
 
-
 if has('vim_starting') && !empty(argv())
   call vimrc#on_filetype()
 endif
@@ -50,9 +49,11 @@ endif
 if !has('vim_starting')
   call dein#call_hook('source')
   call dein#call_hook('post_source')
+  call dein#call_hook('add')
+  call dein#call_hook('post_update')
 endif
 
-if !has('vim_starting') && has('nvim')
+if has('nvim')
   call s:source_rc('neovim.rc.vim')
 endif
 

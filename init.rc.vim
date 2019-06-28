@@ -2,18 +2,6 @@
 " Initialize:
 "
 
-let s:is_windows = has('win32') || has('win64')
-
-function! IsWindows() abort
-  return s:is_windows
-endfunction
-
-function! IsMac() abort
-  return !s:is_windows && !has('win32unix')
-      \ && (has('mac') || has('macunix') || has('gui_macvim')
-      \     || (!executable('xdg-open') && system('uname') =~? '^darwin'))
-endfunction
-
 " Setting of the encoding to use for a save and reading.
 " Make it normal in UTF-8 in Unix.
 if has('vim_starting') && &encoding !=# 'utf-8'
@@ -28,11 +16,6 @@ endif
 let &fileencodings = join([
       \ 'ucs-bom', 'iso-2022-jp-3', 'utf-8', 'euc-jp', 'cp932'])
 
-" Setting of terminal encoding.
-if !has('gui_running') && IsWindows()
-  " For system.
-  set termencoding=cp932
-endif
 
 if has('multi_byte_ime')
   set iminsert=0 imsearch=0
@@ -41,11 +24,6 @@ endif
 " Use English interface.
 language message C
 
-
-if IsWindows()
-  " Exchange path separator.
-   set shellslash
-endif
 
 let $CACHE = expand('~/.cache')
 

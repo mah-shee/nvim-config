@@ -65,26 +65,6 @@ autocmd MyAutoCmd BufWritePost * nested
 
 [ftplugin]
 
-_ = '''
-  " Disable automatically insert comment.
-  setl formatoptions-=r
-  setl formatoptions-=o
-  setl formatoptions+=mMBl
-  " Disable auto wrap.
-  if &l:textwidth != 70 && &filetype !=# 'help'
-    setlocal textwidth=0
-  endif
-  " Use FoldCCtext().
-  if &filetype !=# 'help'
-    setlocal foldtext=FoldCCtext()
-  endif
-  if !&l:modifiable
-    setlocal nofoldenable
-    setlocal foldcolumn=0
-    setlocal colorcolumn=
-  endif
-'''
-
 python = '''
 " Indent settings.
 " setlocal foldmethod=indent

@@ -1,13 +1,4 @@
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-on_event = 'InsertEnter'
-hook_source = '''
-source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
-''' 
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 hook_source = 'source ~/.config/nvim/plugins/denite-source.vim'
@@ -59,18 +50,18 @@ on_source = ['denite.nvim']
 # let g:deoplete#sources#jedi#python_path = system("echo -n (pyenv root)/versions/(pyenv local | grep '^3')/bin/python")
 # '''
 
-[[plugins]]
-repo = 'carlitux/deoplete-ternjs'
-on_ft = ['javascript', 'javascript.jsx', 'jsx']
-build = 'npm install -g tern'
-hook_source = '''
-let g:deoplete#sources#ternjs#filetypes = ['jsx', 'javascript.jsx']
-let g:deoplete#sources#ternjs#depths = 1
-let g:deoplete#sources#ternjs#types = 1
-" Use tern_for_vim.
-let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
-'''
+# [[plugins]]
+# repo = 'carlitux/deoplete-ternjs'
+# on_ft = ['javascript', 'javascript.jsx', 'jsx']
+# build = 'npm install -g tern'
+# hook_source = '''
+# let g:deoplete#sources#ternjs#filetypes = ['jsx', 'javascript.jsx']
+# let g:deoplete#sources#ternjs#depths = 1
+# let g:deoplete#sources#ternjs#types = 1
+# " Use tern_for_vim.
+# let g:tern#command = ["tern"]
+# let g:tern#arguments = ["--persistent"]
+# '''
 
 
 [[plugins]]
@@ -214,7 +205,7 @@ nnoremap <buffer><silent> [Space]gA
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
-on_event = 'InsertEnter'
+on_event = 'InsertCharPre'
 on_ft = 'snippet'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 hook_source = '''
@@ -225,9 +216,6 @@ if has('conceal')
     set conceallevel=2 concealcursor=niv
 endif
 '''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'chemzqm/denite-git'

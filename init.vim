@@ -2,6 +2,7 @@ if &compatible
   set nocompatible
 endif
 
+
 function! s:source_rc(path, ...) abort
   let use_global = get(a:000, 0, !has('vim_starting'))
   let abspath = resolve(expand('~/.config/nvim/' . a:path))
@@ -24,6 +25,8 @@ function! s:source_rc(path, ...) abort
     endif
   endtry
 endfunction
+
+
 " Set augroup.
 augroup MyAutoCmd
   autocmd!
@@ -33,7 +36,6 @@ augroup MyAutoCmd
 augroup END
 augroup filetypedetect
 augroup END
-
 call s:source_rc('keymap.rc.vim')
 
 if has('vim_starting')
@@ -49,8 +51,6 @@ endif
 if !has('vim_starting')
   call dein#call_hook('source')
   call dein#call_hook('post_source')
-  call dein#call_hook('add')
-  call dein#call_hook('post_update')
 endif
 
 if has('nvim')

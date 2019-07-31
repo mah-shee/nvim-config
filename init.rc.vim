@@ -2,29 +2,6 @@
 " Initialize:
 "
 
-" Setting of the encoding to use for a save and reading.
-" Make it normal in UTF-8 in Unix.
-if has('vim_starting') && &encoding !=# 'utf-8'
-  if IsWindows() && !has('gui_running')
-    set encoding=cp932
-  else
-    set encoding=utf-8
-  endif
-endif
-
-" Build encodings.
-let &fileencodings = join([
-      \ 'ucs-bom', 'iso-2022-jp-3', 'utf-8', 'euc-jp', 'cp932'])
-
-
-if has('multi_byte_ime')
-  set iminsert=0 imsearch=0
-endif
-
-" Use English interface.
-language message C
-
-
 let $CACHE = expand('~/.cache')
 
 if !isdirectory(expand($CACHE))

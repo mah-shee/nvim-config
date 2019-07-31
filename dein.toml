@@ -3,11 +3,24 @@ repo = 'Shougo/dein.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
 depends = 'context_filetype.vim'
 hook_source = '''
 source ~/.config/nvim/plugins/deoplete.vim
 call deoplete#enable()
 '''
+
+[[plugins]]
+repo = 'tbodt/deoplete-tabnine' 
+build = './install.sh'
+
+# [[plugins]]
+# repo = 'autozimu/LanguageClient-neovim'
+# rev = 'next'
+# build = 'bash install.sh'
+# hook_source = '''
+# source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
+# ''' 
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

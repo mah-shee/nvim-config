@@ -37,6 +37,6 @@
   let g:ale_fix_on_save = 1
 
   nmap [ale] <Nop>
-  map <C-s> [ale]
+  map <C-a> [ale]
   nmap <silent> [ale]<C-P> <Plug>(ale_previous)
   nmap <silent> [ale]<C-N> <Plug>(ale_next)

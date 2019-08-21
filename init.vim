@@ -36,6 +36,7 @@ augroup MyAutoCmd
 augroup END
 augroup filetypedetect
 augroup END
+
 call s:source_rc('keymap.rc.vim')
 
 if has('vim_starting')

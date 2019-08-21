@@ -209,6 +209,8 @@ on_event = 'InsertCharPre'
 on_ft = 'snippet'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 hook_source = '''
+let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
+let g:neosnippet#enable_snipmate_compatibility = 1
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
@@ -283,6 +285,13 @@ source ~/.config/nvim/plugins/fugitive.vim
 # '''
 
 [[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+hook_add = '''
+source ~/.config/nvim/plugins/rust.rc.vim
+'''
+
+[[plugins]]
 repo = 'billyvg/tigris.nvim'
 on_ft = ['javascript', 'javascript.jsx']
 hook_post_update = '''
@@ -337,6 +346,3 @@ hook_post_update = 'call fruzzy#install()'
 [[plugins]]
 repo = 'sakhnik/nvim-gdb'
 on_ft = ['python']
-
-[[plugins]]
-repo = 'ncm2/float-preview.nvim.git'

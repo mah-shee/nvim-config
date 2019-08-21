@@ -3,6 +3,7 @@ set hidden
 " 言語ごとに設定する
 let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
 
 augroup LanguageClient_config

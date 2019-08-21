@@ -13,7 +13,15 @@ augroup LanguageClient_config
 augroup END
 
 let g:LanguageClient_autoStart = 1
-nnoremap <Leader>lh :call LanguageClient_textDocument_hover()<CR>
-nnoremap <Leader>ld :call LanguageClient_textDocument_definition()<CR>
-nnoremap <Leader>lr :call LanguageClient_textDocument_rename()<CR>
-nnoremap <Leader>lf :call LanguageClient_textDocument_formatting()<CR>
+nnoremap <silent> [Space]h :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> [Space]d :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> [Space]r :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> [Space]f :call LanguageClient_textDocument_formatting()<CR>
+
+augroup LCHighlight
+    autocmd!
+    autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp,*.rs call LanguageClient#textDocument_documentHighlight()
+augroup END
+
+" カーソル停止から更新までの時間をミリ秒で記入。デフォルトは4秒=4000
+set updatetime=50

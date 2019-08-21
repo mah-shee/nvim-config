@@ -284,6 +284,7 @@ source ~/.config/nvim/plugins/fugitive.vim
 # source ~/.config/nvim/plugins/anzu.vim
 # '''
 
+
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = 'rust'
@@ -325,13 +326,6 @@ on_ft = ['python']
 [[plugins]]
 repo = 'rhysd/vim-gfm-syntax'
 on_ft = 'markdown'
-
-[[plugins]]
-repo = 'easymotion/vim-easymotion'
-on_path = '.*'
-hook_source = '''
-source ~/.config/nvim/plugins/easymotion.vim
-'''
 
 [[plugins]]
 repo = 'Jagua/vim-denite-ghq'

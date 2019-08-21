@@ -59,3 +59,9 @@ repo = 'vim-airline/vim-airline'
 hook_add = '''
 source ~/.config/nvim/plugins/airline.vim
 '''
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_source = '''
+source ~/.config/nvim/plugins/easymotion.vim
+'''

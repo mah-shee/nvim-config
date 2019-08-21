@@ -5,7 +5,7 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
 depends = 'context_filetype.vim'
-hook_source = '''
+hook_add = '''
 source ~/.config/nvim/plugins/deoplete.vim
 call deoplete#enable()
 '''

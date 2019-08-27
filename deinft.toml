@@ -81,6 +81,10 @@ setlocal colorcolumn=80
 html = '''
 setlocal includeexpr=substitute(v:fname,'^\\/','','')
 setlocal path+=./;/
+setlocal expandtab
+setlocal tabstop<
+setlocal softtabstop=2
+setlocal shiftwidth=2
 '''
 
 go = '''

@@ -284,7 +284,6 @@ source ~/.config/nvim/plugins/fugitive.vim
 # source ~/.config/nvim/plugins/anzu.vim
 # '''
 
-
 [[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = 'rust'

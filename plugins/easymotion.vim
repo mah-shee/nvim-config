@@ -23,8 +23,8 @@ omap <Leader>/ <Plug>(easymotion-tn)
 " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 " Without these mappings, `n` & `N` works fine. (These mappings just provide
 " different highlight method and have some other features )
-map  <Leader>n <Plug>(easymotion-next)
-map  <Leader>P <Plug>(easymotion-prev)
+map  n <Plug>(easymotion-next)
+map  P <Plug>(easymotion-prev)
 
 map  <Leader>l <Plug>(easymotion-lineforward)
 map  <Leader>j <Plug>(easymotion-j)

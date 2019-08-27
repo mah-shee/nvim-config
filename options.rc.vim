@@ -30,6 +30,9 @@ autocmd MyAutoCmd BufRead,BufWritePost *.txt setlocal modelines=5 modeline
 
 " Use clipboard register.
 
+let g:python_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^2')/bin/python")
+let g:python3_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^3')/bin/python")
+
 if (!has('nvim') || $DISPLAY != '') && has('clipboard')
   if has('unnamedplus')
      set clipboard& clipboard+=unnamedplus

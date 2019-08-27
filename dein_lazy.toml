@@ -311,16 +311,16 @@ on_ft = 'html'
 repo='mattn/emmet-vim'
 on_ft = 'html'
 
-[[plugins]]
-repo = 'w0rp/ale'
-on_ft = ['python', 'javascript']
-hook_post_source = '''
-source ~/.config/nvim/plugins/ale.vim
-'''
+# [[plugins]]
+# repo = 'w0rp/ale'
+# on_ft = ['python', 'javascript']
+# hook_post_source = '''
+# source ~/.config/nvim/plugins/ale.vim
+# '''
 
-[[plugins]]
-repo = 'Vimjas/vim-python-pep8-indent'
-on_ft = ['python']
+# [[plugins]]
+# repo = 'Vimjas/vim-python-pep8-indent'
+# on_ft = ['python']
 
 [[plugins]]
 repo = 'rhysd/vim-gfm-syntax'
@@ -336,6 +336,10 @@ on_source = ['denite.nvim']
 hook_source = 'let g:fruzzy#sortonempty = 0'
 hook_post_update = 'call fruzzy#install()'
 
+# [[plugins]]
+# repo = 'sakhnik/nvim-gdb'
+# on_ft = ['python']
+
 [[plugins]]
-repo = 'sakhnik/nvim-gdb'
+repo = 'jmcantrell/vim-virtualenv'
 on_ft = ['python']

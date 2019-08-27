@@ -162,7 +162,7 @@ repo = 'Shougo/deol.nvim'
 on_source = 'denite.nvim'
 hook_add = '''
   " nnoremap <silent> [Space]s :<C-u>Deol zsh -edit<CR>
-  nnoremap <silent> N :<C-u>call deol#new({'command': 'fish'})<CR>
+  nnoremap <silent> [Space]n :<C-u>call deol#new({'command': 'fish'})<CR>
   nnoremap <silent> [Space]s :<C-u>Deol fish<CR>
   nnoremap <silent> [Window]D  :<C-u>call deol#kill_editor()<CR>
 '''

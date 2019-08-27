@@ -8,7 +8,7 @@ nnoremap <silent> [Window]<Space>
             \ :<C-u>Denite file/rec:~/.config/nvim<CR>
 nnoremap <expr> / line('$') > 10000 ? '/' :
             \ ":\<C-u>Denite -buffer-name=search -start-filter line\<CR>"
-nnoremap <expr> n line('$') > 10000 ? 'n' :
+nnoremap <expr> [Window]N line('$') > 10000 ? 'n' :
             \ ":\<C-u>Denite -buffer-name=search -resume -refresh -no-start-filter\<CR>"
 nnoremap <expr> * line('$') > 10000 ? '*' :
             \ ":\<C-u>DeniteCursorWord -buffer-name=search line\<CR>"

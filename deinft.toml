@@ -82,9 +82,11 @@ html = '''
 setlocal includeexpr=substitute(v:fname,'^\\/','','')
 setlocal path+=./;/
 setlocal expandtab
-setlocal tabstop<
+setlocal tabstop=2
 setlocal softtabstop=2
 setlocal shiftwidth=2
+setlocal smarttab
+setlocal smartindent
 '''
 
 go = '''
@@ -112,9 +114,9 @@ setlocal iskeyword+=-
 '''
 
 javascript = '''
-setlocal tabstop = 2
-setlocal shiftwidth = 2
-setlocal softtabstop = 2
+setlocal tabstop=2
+setlocal shiftwidth=2
+setlocal softtabstop=2
 setlocal smarttab
 setlocal expandtab
 setlocal autoindent

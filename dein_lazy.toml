@@ -220,11 +220,18 @@ endif
 '''
 
 [[plugins]]
+repo = 'easymotion/vim-easymotion'
+on_event = 'VimEnter'
+hook_add = '''
+source ~/.config/nvim/plugins/easymotion.vim
+'''
+
+[[plugins]]
 repo = 'chemzqm/denite-git'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
-on_path = '.*'
+on_event = 'VimEnter'
 hook_source = '''
 source ~/.config/nvim/plugins/quickrun.vim
 '''
@@ -238,15 +245,8 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
-on_path = '.*'
-hook_add = '''
-let g:indentLine_char = '¦'
-'''
-
-[[plugins]]
 repo = 'sjl/gundo.vim'
-on_path = '.*'
+on_event = 'VimEnter'
 hook_source = '''
 nnoremap <F5> :GundoToggle<CR>
 '''
@@ -265,14 +265,14 @@ on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
-on_path = '.*'
+on_event = 'VimEnter'
 hook_source = '''
 source ~/.config/nvim/plugins/gitgutter.vim
 '''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-on_path = '.*'
+on_event = 'VimEnter'
 hook_source = '''
 source ~/.config/nvim/plugins/fugitive.vim
 '''

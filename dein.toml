@@ -61,7 +61,8 @@ source ~/.config/nvim/plugins/airline.vim
 '''
 
 [[plugins]]
-repo = 'easymotion/vim-easymotion'
+repo = 'yggdroot/indentline'
 hook_add = '''
-source ~/.config/nvim/plugins/easymotion.vim
+let g:indentline_char = '¦'
 '''
+

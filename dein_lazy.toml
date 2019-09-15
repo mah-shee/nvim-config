@@ -29,10 +29,18 @@ nnoremap <silent><buffer><expr> <Space>
 repo = 'ncm2/float-preview.nvim'
 on_source = 'deoplete.nvim'
 if = 'has("nvim")'
-hook_source = '''
+hook_add = '''
 let g:float_preview#docked = 0
 let g:float_preview#max_width = 60
 let g:float_preview#max_height = 20
+
+function! DisableExtras()
+  call nvim_win_set_option(g:float_preview#win, 'number', v:false)
+  call nvim_win_set_option(g:float_preview#win, 'relativenumber', v:false)
+  call nvim_win_set_option(g:float_preview#win, 'cursorline', v:false)
+endfunction
+
+autocmd User FloatPreviewWinOpen call DisableExtras()
 '''
 
 [[plugins]]

@@ -5,7 +5,16 @@ let g:deoplete#file#enable_buffer_path = 1
 " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 "
-call deoplete#custom#source('tabnine', 'rank', 300)
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
+endfunction
+
+autocmd CompleteDone * silent! pclose!
+
+
+call deoplete#custom#source('tabnine', 'rank', 500)
 call deoplete#custom#source('tabnine', 'min_pattern_length', 2)
 " call deoplete#custom#source('tabnine', 'is_volatile', v:false)
 call deoplete#custom#var('tabnine', {

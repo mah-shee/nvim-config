@@ -5,6 +5,26 @@ let g:deoplete#file#enable_buffer_path = 1
 " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 "
+call deoplete#custom#source('tabnine', 'rank', 300)
+call deoplete#custom#source('tabnine', 'min_pattern_length', 2)
+" call deoplete#custom#source('tabnine', 'is_volatile', v:false)
+call deoplete#custom#var('tabnine', {
+      \ 'line_limit': 500,
+      \ 'max_num_results': 20,
+      \ })
+call deoplete#custom#source('_', 'converters', [
+      \ 'converter_remove_paren',
+      \ 'converter_remove_overlap',
+      \ 'matcher_length',
+      \ 'converter_truncate_abbr',
+      \ 'converter_truncate_info',
+      \ 'converter_truncate_menu',
+      \ ])
+call deoplete#custom#source('tabnine', 'converters', [
+      \ 'converter_remove_overlap',
+      \ 'converter_truncate_info',
+      \ ])
+
 call deoplete#custom#option({
       \ 'auto_refresh_delay': 10,
       \ 'camel_case': v:true,

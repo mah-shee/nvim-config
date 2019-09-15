@@ -1,0 +1,10 @@
+#######
+LanguageClient 0.1.147 e4478a4789805c66ce24ae786677ae557cd411da
+#######
+14:48:33 WARN unnamed src/utils.rs:77 Unknown project type. Fallback to use dir as project root: Ok("/Users/masatoshi/Documents/instagram_auto_like")
+14:48:33 WARN unnamed src/utils.rs:77 Unknown project type. Fallback to use dir as project root: Ok("/Users/masatoshi/Documents/instagram_auto_like")
+14:48:33 WARN unnamed src/language_server_protocol.rs:912 Failed to get initializationOptions: Failed to read file (/Users/masatoshi/Documents/instagram_auto_like/.vim/settings.json): No such file or directory (os error 2)
+14:48:33 WARN unnamed src/language_server_protocol.rs:912 Failed to get initializationOptions: Failed to read file (/Users/masatoshi/Documents/instagram_auto_like/.vim/settings.json): No such file or directory (os error 2)
+14:48:34 ERROR reader-Some("python") src/rpcclient.rs:35 Thread reader-Some("python") exited with error: ErrorMessage { msg: "Unable to read from language server" }
+14:48:34 WARN unnamed src/language_server_protocol.rs:2878 Failed to get workspace settings: Failed to read file (/Users/masatoshi/Documents/instagram_auto_like/.vim/settings.json): No such file or directory (os error 2)
+14:48:35 WARN unnamed src/language_server_protocol.rs:2878 Failed to get workspace settings: Failed to read file (/Users/masatoshi/Documents/instagram_auto_like/.vim/settings.json): No such file or directory (os error 2)

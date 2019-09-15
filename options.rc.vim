@@ -161,7 +161,7 @@ endif
 let g:did_install_default_menus = 1
 
 " Completion setting.
-set completeopt=menuone
+" set completeopt=menuone
 " Don't complete from other buffer.
 set complete=.
 " Set popup menu max height.

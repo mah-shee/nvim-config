@@ -26,4 +26,4 @@ augroup LCHighlight
     autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp,*.rs call LanguageClient#textDocument_documentHighlight()
 augroup END
 
-let g:LanguageClient_loggingFile = expand('~/.config/nvim/LanguageClient.log')
+" let g:LanguageClient_loggingFile = expand('~/.config/nvim/LanguageClient.log')

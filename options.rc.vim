@@ -33,29 +33,29 @@ autocmd MyAutoCmd BufRead,BufWritePost *.txt setlocal modelines=5 modeline
 let g:python_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^2')/bin/python")
 let g:python3_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^3')/bin/python")
 
-if (!has('nvim') || $DISPLAY != '') && has('clipboard')
-  if has('unnamedplus')
-     set clipboard& clipboard+=unnamedplus
-  else
-     set clipboard& clipboard+=unnamed
-  endif
-endif
+" if (!has('nvim') || $DISPLAY != '') && has('clipboard')
+"   if has('unnamedplus')
+"      set clipboard& clipboard+=unnamedplus
+"   else
+"      set clipboard& clipboard+=unnamed
+"   endif
+" endif
 
 
 " Highlight <>.
 set matchpairs+=<:>
 
 " FastFold
-autocmd MyAutoCmd TextChangedI,TextChanged *
-      \ if &l:foldenable && &l:foldmethod !=# 'manual' |
-      \   let b:foldmethod_save = &l:foldmethod |
-      \   let &l:foldmethod = 'manual' |
-      \ endif
-autocmd MyAutoCmd BufWritePost *
-      \ if &l:foldmethod ==# 'manual' && exists('b:foldmethod_save') |
-      \   let &l:foldmethod = b:foldmethod_save |
-      \   execute 'normal! zx' |
-      \ endif
+" autocmd MyAutoCmd TextChangedI,TextChanged *
+"       \ if &l:foldenable && &l:foldmethod !=# 'manual' |
+"       \   let b:foldmethod_save = &l:foldmethod |
+"       \   let &l:foldmethod = 'manual' |
+"       \ endif
+" autocmd MyAutoCmd BufWritePost *
+"       \ if &l:foldmethod ==# 'manual' && exists('b:foldmethod_save') |
+"       \   let &l:foldmethod = b:foldmethod_save |
+"       \   execute 'normal! zx' |
+"       \ endif
 
 if exists('*FoldCCtext')
   " Use FoldCCtext().
@@ -97,9 +97,9 @@ autocmd MyAutoCmd InsertLeave *
 " Update diff.
 autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 
-if has('patch-8.1.0360')
-  set diffopt=internal,algorithm:patience,indent-heuristic
-endif
+" if has('patch-8.1.0360')
+"   set diffopt=internal,algorithm:patience,indent-heuristic
+" endif
 
 " Make directory automatically.
 " --------------------------------------
@@ -120,18 +120,18 @@ set formatexpr=autofmt#japanese#formatexpr()
 
 " Do not display the completion messages
 set noshowmode
-if has('patch-7.4.314')
-  set shortmess+=c
-else
-  autocmd MyAutoCmd VimEnter *
-        \ highlight ModeMsg guifg=bg guibg=bg |
-        \ highlight Question guifg=bg guibg=bg
-endif
-
-" Do not display the edit messages
-if has('patch-7.4.1570')
-  set shortmess+=F
-endif
+" if has('patch-7.4.314')
+"   set shortmess+=c
+" else
+"   autocmd MyAutoCmd VimEnter *
+"         \ highlight ModeMsg guifg=bg guibg=bg |
+"         \ highlight Question guifg=bg guibg=bg
+" endif
+" 
+" " Do not display the edit messages
+" if has('patch-7.4.1570')
+"   set shortmess+=F
+" endif
 
 
 if has('nvim')

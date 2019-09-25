@@ -5,6 +5,9 @@ set updatetime=50
 let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'css': ['css-languageserver --stdio'],
+    \ 'sass': ['css-languageserver --stdio'],
+    \ 'less': ['css-languageserver --stdio'],
     \ }
 
 augroup LanguageClient_config

@@ -229,7 +229,6 @@ endif
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
-on_event = 'VimEnter'
 hook_add = '''
 source ~/.config/nvim/plugins/easymotion.vim
 '''
@@ -239,7 +238,7 @@ repo = 'chemzqm/denite-git'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
-on_event = 'VimEnter'
+on_event = 'FileChangedShell'
 hook_source = '''
 source ~/.config/nvim/plugins/quickrun.vim
 '''
@@ -254,7 +253,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'sjl/gundo.vim'
-on_event = 'VimEnter'
+on_event = 'FileChangedShell'
 hook_source = '''
 nnoremap <F5> :GundoToggle<CR>
 '''
@@ -273,14 +272,14 @@ on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
-on_event = 'VimEnter'
+on_event = 'FileChangedShell'
 hook_source = '''
 source ~/.config/nvim/plugins/gitgutter.vim
 '''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-on_event = 'VimEnter'
+on_event = 'FileChangedShell'
 hook_source = '''
 source ~/.config/nvim/plugins/fugitive.vim
 '''

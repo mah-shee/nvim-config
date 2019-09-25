@@ -12,12 +12,14 @@ call deoplete#enable()
 
 [[plugins]]
 repo = 'tbodt/deoplete-tabnine' 
+on_event = 'InsertEnter'
 build = './install.sh'
 
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 build = 'bash install.sh'
+on_event = 'InsertEnter'
 hook_source = '''
 source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 ''' 

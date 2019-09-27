@@ -19,7 +19,6 @@ build = './install.sh'
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 build = 'bash install.sh'
-on_event = 'InsertEnter'
 hook_source = '''
 source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 ''' 

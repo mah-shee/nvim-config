@@ -89,6 +89,15 @@ setlocal smarttab
 setlocal smartindent
 '''
 
+scss = '''
+setlocal expandtab
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal smarttab
+setlocal smartindent
+'''
+
 go = '''
 highlight default link goErr WarningMsg
 match goErr /\<err\>/

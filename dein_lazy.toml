@@ -229,6 +229,7 @@ endif
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
+on_event = 'InsertLeave'
 hook_add = '''
 source ~/.config/nvim/plugins/easymotion.vim
 '''

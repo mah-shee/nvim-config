@@ -10,6 +10,15 @@ let g:LanguageClient_serverCommands = {
     \ 'less': ['css-languageserver --stdio'],
     \ }
 
+if executable('javascript-typescript-stdio')
+  let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+  " Use LanguageServer for omnifunc completion
+  autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+else
+  echo "javascript-typescript-stdio not installed!\n"
+  :cq
+endif
+
 augroup LanguageClient_config
     autocmd!
     autocmd User LanguageClientStarted setlocal signcolumn=yes

@@ -19,9 +19,9 @@ augroup LanguageClient_config
     autocmd User LanguageClientStopped setlocal signcolumn=auto
 augroup END
 
-let $RUST_BACKTRACE = 1
-let g:LanguageClient_devel = 1 " Use rust debug build
-let g:LanguageClient_loggingLevel = 'INFO' " Use highest logging level
+" let $RUST_BACKTRACE = 1
+" let g:LanguageClient_devel = 1 " Use rust debug build
+" let g:LanguageClient_loggingLevel = 'INFO' " Use highest logging level
 
 let g:LanguageClient_loggingFile = expand('~/.local/share/nvim/LanguageClient.log')
 let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')

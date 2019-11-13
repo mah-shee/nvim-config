@@ -72,7 +72,7 @@ autocmd MyAutoCmd InsertLeave *
       \ if &l:diff | diffupdate | endif
 
 " Update diff.
-autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
+" autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 
 " Do not display the completion messages
 set noshowmode

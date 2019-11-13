@@ -25,8 +25,8 @@ endfunction
 " Set augroup.
 augroup MyAutoCmd
   autocmd!
-"   autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *?
-"         \ call vimrc#on_filetype()
+  autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *?
+        \ call vimrc#on_filetype()
   autocmd CursorHold *.toml syntax sync minlines=300
 augroup END
 augroup filetypedetect

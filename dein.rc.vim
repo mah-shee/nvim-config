@@ -6,9 +6,9 @@ let g:dein#notification_icon = '~/.config/nvim/signs/warn.png'
 let g:dein#install_log_filename = '~/dein.log'
 
 let s:path = expand('$CACHE/dein')
-if !dein#load_state(s:path)
-  finish
-endif
+" if !dein#load_state(s:path)
+"   finish
+" endif
 
 let s:dein_toml = '~/.config/nvim/dein.toml'
 let s:dein_lazy_toml = '~/.config/nvim/dein_lazy.toml'

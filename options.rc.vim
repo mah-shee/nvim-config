@@ -6,6 +6,7 @@ highlight! Normal ctermbg=NONE guibg=NONE
 highlight! NonText ctermbg=NONE guibg=NONE
 highlight! LineNr ctermbg=NONE guibg=NONE
 
+set secure
 set hidden
 set number
 set autoindent
@@ -27,41 +28,16 @@ set signcolumn=yes
 " Disable modeline.
 set modelines=0
 set nomodeline
-" autocmd MyAutoCmd BufRead,BufWritePost *.txt setlocal modelines=5 modeline
+autocmd MyAutoCmd BufRead,BufWritePost *.txt setlocal modelines=5 modeline
 
-" Use clipboard register.
 
 let g:python_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^2')/bin/python")
 let g:python3_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^3')/bin/python")
 
-" if (!has('nvim') || $DISPLAY != '') && has('clipboard')
-"   if has('unnamedplus')
-"      set clipboard& clipboard+=unnamedplus
-"   else
-"      set clipboard& clipboard+=unnamed
-"   endif
-" endif
 
 
 " Highlight <>.
 set matchpairs+=<:>
-
-" FastFold
-" autocmd MyAutoCmd TextChangedI,TextChanged *
-"       \ if &l:foldenable && &l:foldmethod !=# 'manual' |
-"       \   let b:foldmethod_save = &l:foldmethod |
-"       \   let &l:foldmethod = 'manual' |
-"       \ endif
-" autocmd MyAutoCmd BufWritePost *
-"       \ if &l:foldmethod ==# 'manual' && exists('b:foldmethod_save') |
-"       \   let &l:foldmethod = b:foldmethod_save |
-"       \   execute 'normal! zx' |
-"       \ endif
-
-if exists('*FoldCCtext')
-  " Use FoldCCtext().
-  set foldtext=FoldCCtext()
-endif
 
 " Use vimgrep.
 " set grepprg=internal
@@ -96,44 +72,10 @@ autocmd MyAutoCmd InsertLeave *
       \ if &l:diff | diffupdate | endif
 
 " Update diff.
-autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
-
-" if has('patch-8.1.0360')
-"   set diffopt=internal,algorithm:patience,indent-heuristic
-" endif
-
-" Make directory automatically.
-" --------------------------------------
-" http://vim-users.jp/2011/02/hack202/
-
-autocmd MyAutoCmd BufWritePre *
-      \ call s:mkdir_as_necessary(expand('<afile>:p:h'), v:cmdbang)
-function! s:mkdir_as_necessary(dir, force) abort
-  if !isdirectory(a:dir) && &l:buftype == '' &&
-        \ (a:force || input(printf('"%s" does not exist. Create? [y/N]',
-        \              a:dir)) =~? '^y\%[es]$')
-    call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-  endif
-endfunction
-
-" Use autofmt.
-" set formatexpr=autofmt#japanese#formatexpr()
+" autocmd MyAutoCmd InsertLeave * if &l:diff | diffupdate | endif
 
 " Do not display the completion messages
 set noshowmode
-" if has('patch-7.4.314')
-"   set shortmess+=c
-" else
-"   autocmd MyAutoCmd VimEnter *
-"         \ highlight ModeMsg guifg=bg guibg=bg |
-"         \ highlight Question guifg=bg guibg=bg
-" endif
-" 
-" " Do not display the edit messages
-" if has('patch-7.4.1570')
-"   set shortmess+=F
-" endif
-
 
 " Disable packpath
 set packpath=
@@ -218,17 +160,6 @@ if exists('&pumblend')
 endif
 
 " Use cursor shape feature
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-
-" Share the histories
-" autocmd MyAutoCmd FocusGained *
-"      \ if exists(':rshada') | rshada | wshada | endif
-
-" autocmd MyAutoCmd FocusGained * checktime
-
-" Modifiable terminal
-" autocmd MyAutoCmd TermOpen * setlocal modifiable
-" autocmd MyAutoCmd TermClose * buffer #
 
 let g:terminal_scrollback_buffer_size = 3000
 

@@ -25,8 +25,8 @@ endfunction
 " Set augroup.
 augroup MyAutoCmd
   autocmd!
-  autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *?
-        \ call vimrc#on_filetype()
+"   autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *?
+"         \ call vimrc#on_filetype()
   autocmd CursorHold *.toml syntax sync minlines=300
 augroup END
 augroup filetypedetect
@@ -47,10 +47,6 @@ endif
 if !has('vim_starting')
   call dein#call_hook('source')
   call dein#call_hook('post_source')
-endif
-
-if has('nvim')
-  call s:source_rc('neovim.rc.vim')
 endif
 
 call s:source_rc('options.rc.vim')

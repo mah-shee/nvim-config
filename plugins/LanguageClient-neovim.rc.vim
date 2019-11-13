@@ -1,6 +1,12 @@
 set hidden
 set updatetime=50
 " 言語ごとに設定する
+"
+augroup filetype_rust
+    autocmd!
+    autocmd BufReadPost *.rs setlocal filetype=rust
+augroup END
+
 let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
@@ -18,9 +24,9 @@ augroup LanguageClient_config
     autocmd User LanguageClientStopped setlocal signcolumn=auto
 augroup END
 
-" let $RUST_BACKTRACE = 1
-" let g:LanguageClient_devel = 1 " Use rust debug build
-" let g:LanguageClient_loggingLevel = 'INFO' " Use highest logging level
+let $RUST_BACKTRACE = 1
+let g:LanguageClient_devel = 1 " Use rust debug build
+let g:LanguageClient_loggingLevel = 'INFO' " Use highest logging level
 
 let g:LanguageClient_loggingFile = expand('~/.local/share/nvim/LanguageClient.log')
 let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
@@ -33,7 +39,8 @@ nnoremap <silent> [Space]r :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> [Space]f :call LanguageClient_textDocument_formatting()<CR>
 nnoremap <silent> [Space]t :call LanguageClient_textDocument_typeDefinition()<CR>
 
-augroup LCHighlight
-    autocmd!
-    autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp,*.rs,*.js,*.jsx,*.ts call LanguageClient#textDocument_documentHighlight()
-augroup END
+" augroup LCHighlight
+"     autocmd!
+"     autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp,*.rs,*.js,*.jsx,*.ts call LanguageClient#textDocument_documentHighlight()
+" augroup END
+"

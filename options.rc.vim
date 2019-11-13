@@ -27,7 +27,7 @@ set signcolumn=yes
 " Disable modeline.
 set modelines=0
 set nomodeline
-autocmd MyAutoCmd BufRead,BufWritePost *.txt setlocal modelines=5 modeline
+" autocmd MyAutoCmd BufRead,BufWritePost *.txt setlocal modelines=5 modeline
 
 " Use clipboard register.
 
@@ -117,7 +117,7 @@ function! s:mkdir_as_necessary(dir, force) abort
 endfunction
 
 " Use autofmt.
-set formatexpr=autofmt#japanese#formatexpr()
+" set formatexpr=autofmt#japanese#formatexpr()
 
 " Do not display the completion messages
 set noshowmode
@@ -134,6 +134,9 @@ set noshowmode
 "   set shortmess+=F
 " endif
 
+
+" Disable packpath
+set packpath=
 
 if has('nvim')
   " Display candidates by popup menu.
@@ -203,3 +206,54 @@ set display=lastline
 set conceallevel=2 concealcursor=niv
 
 set colorcolumn=79
+
+if exists('&inccommand')
+  set inccommand=nosplit
+endif
+
+if exists('&pumblend')
+  set pumblend=20
+  " For gonvim
+  autocmd MyAutoCmd InsertEnter * set pumblend=20
+endif
+
+" Use cursor shape feature
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+
+" Share the histories
+" autocmd MyAutoCmd FocusGained *
+"      \ if exists(':rshada') | rshada | wshada | endif
+
+" autocmd MyAutoCmd FocusGained * checktime
+
+" Modifiable terminal
+" autocmd MyAutoCmd TermOpen * setlocal modifiable
+" autocmd MyAutoCmd TermClose * buffer #
+
+let g:terminal_scrollback_buffer_size = 3000
+
+"---------------------------------------------------------------------------
+" Disable default plugins
+
+" Disable menu.vim
+if has('gui_running')
+   set guioptions=Mc
+endif
+
+let g:loaded_2html_plugin      = 1
+let g:loaded_logiPat           = 1
+let g:loaded_getscriptPlugin   = 1
+let g:loaded_gzip              = 1
+let g:loaded_man               = 1
+let g:loaded_matchit           = 1
+let g:loaded_matchparen        = 1
+let g:loaded_netrwFileHandlers = 1
+let g:loaded_netrwPlugin       = 1
+let g:loaded_netrwSettings     = 1
+let g:loaded_rrhelper          = 1
+let g:loaded_shada_plugin      = 1
+let g:loaded_spellfile_plugin  = 1
+let g:loaded_tarPlugin         = 1
+let g:loaded_tutor_mode_plugin = 1
+let g:loaded_vimballPlugin     = 1
+let g:loaded_zipPlugin         = 1

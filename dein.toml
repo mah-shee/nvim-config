@@ -1,19 +1,6 @@
 [[plugins]]
-repo = 'Shougo/dein.vim'
-
-[[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-on_event = 'InsertEnter'
-hook_add = '''
-source ~/.config/nvim/plugins/deoplete.vim
-call deoplete#enable()
-'''
-
-[[plugins]]
-repo = 'tbodt/deoplete-tabnine' 
-on_event = 'InsertEnter'
-build = './install.sh'
+depends = 'zchee/deoplete-zsh'
 
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
@@ -22,47 +9,3 @@ build = 'cargo build'
 hook_source = '''
 source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 ''' 
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
-on_event = 'TextYankPost'
-on_source = ['denite.nvim']
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'thinca/vim-themis'
-
-[[plugins]]
-repo = 'sheerun/vim-polyglot'
-hook_add = '''
-let g:polyglot_disabled = ['markdown', 'tsx', 'typescript']
-'''
-
-[[plugins]]
-repo = 'ayu-theme/ayu-vim'
-hook_add = '''
-set termguicolors
-let ayucolor="dark"
-colorscheme ayu
-'''
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_add = '''
-source ~/.config/nvim/plugins/airline.vim
-'''
-
-[[plugins]]
-repo = 'yggdroot/indentline'
-hook_add = '''
-let g:indentline_char = '¦'
-'''

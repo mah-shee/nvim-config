@@ -1,5 +1,4 @@
 set hidden
-set signcolumn=yes
 set updatetime=50
 " 言語ごとに設定する
 let g:LanguageClient_serverCommands = {
@@ -38,4 +37,3 @@ augroup LCHighlight
     autocmd!
     autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp,*.rs,*.js,*.jsx,*.ts call LanguageClient#textDocument_documentHighlight()
 augroup END
-

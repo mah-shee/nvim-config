@@ -22,6 +22,7 @@ set textwidth=0
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 set conceallevel=0
 set nohlsearch
+set signcolumn=yes
 
 " Disable modeline.
 set modelines=0

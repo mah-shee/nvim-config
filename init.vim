@@ -23,7 +23,7 @@ if dein#check_install()
 endif
 
 
-if !has('vim_starting')
-  call dein#call_hook('source')
-  call dein#call_hook('post_source')
-endif
+" if !has('vim_starting')
+"   call dein#call_hook('source')
+"   call dein#call_hook('post_source')
+" endif

@@ -1,6 +1,9 @@
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'hoge'
+hook_add = '''
+call deoplete#enable()
+'''
 
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'

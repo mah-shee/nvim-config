@@ -1,6 +1,7 @@
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/shougo/dein.vim'
 
+
 if &runtimepath !~# '/dein.vim'
  if !isdirectory(s:dein_repo_dir)
  execute '!git clone https://github.com/shougo/dein.vim' s:dein_repo_dir

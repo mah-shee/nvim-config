@@ -16,6 +16,7 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'typescript': ['typescript-language-server', '--stdio'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ }
 
 augroup LanguageClient_config

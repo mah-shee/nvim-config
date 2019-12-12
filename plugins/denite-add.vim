@@ -33,3 +33,4 @@ nnoremap <silent> <C-h> :<C-u>DeniteCursorWord help<CR>
 nnoremap <silent> [Space]gs :<C-u>Denite gitstatus<CR>
 nnoremap <silent> ;;
             \ :<C-u>Denite command command_history<CR>
+nnoremap <silent> [Window]b :Denite buffer<CR>

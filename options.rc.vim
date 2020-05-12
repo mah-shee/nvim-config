@@ -207,7 +207,7 @@ set display=lastline
 " For conceal.
 set conceallevel=2 concealcursor=niv
 
-set colorcolumn=79
+" set colorcolumn=79
 
 if exists('&inccommand')
   set inccommand=nosplit

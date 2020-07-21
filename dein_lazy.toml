@@ -24,6 +24,14 @@ nnoremap <silent><buffer><expr> i
 nnoremap <silent><buffer><expr> <Space>
 \ denite#do_map('toggle_select').'j'
 '''
+denite-filter = '''
+" 一つ上のディレクトリを開き直す
+inoremap <silent><buffer><expr> <BS> denite#do_map('move_up_path')
+" imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+" Deniteを閉じる
+inoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+'''
 
 [[plugins]]
 repo = 'ncm2/float-preview.nvim'

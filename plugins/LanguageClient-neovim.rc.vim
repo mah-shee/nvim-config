@@ -17,6 +17,7 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
     \ 'typescript': ['typescript-language-server', '--stdio'],
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ 'go': ['gopls']
     \ }
 
 augroup LanguageClient_config
@@ -26,6 +27,8 @@ augroup LanguageClient_config
 augroup END
 
 let $RUST_BACKTRACE = 1
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+
 let g:LanguageClient_devel = 1 " Use rust debug build
 let g:LanguageClient_loggingLevel = 'INFO' " Use highest logging level
 

@@ -28,7 +28,6 @@ augroup END
 
 let $RUST_BACKTRACE = 1
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
-
 let g:LanguageClient_devel = 1 " Use rust debug build
 let g:LanguageClient_loggingLevel = 'INFO' " Use highest logging level
 
@@ -42,6 +41,7 @@ nnoremap <silent> [Space]d :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> [Space]r :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> [Space]f :call LanguageClient_textDocument_formatting()<CR>
 nnoremap <silent> [Space]t :call LanguageClient_textDocument_typeDefinition()<CR>
+nnoremap <silent> [space]c :call LanguageClient_textDocument_codeAction()<CR> 
 
 " augroup LCHighlight
 "     autocmd!

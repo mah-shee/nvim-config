@@ -81,3 +81,16 @@ repo = 'yggdroot/indentline'
 hook_add = '''
 let g:indentline_char = '¦'
 '''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_source = '''
+source ~/.config/nvim/plugins/fugitive.vim
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+on_event = 'InsertLeave'
+hook_source = '''
+source ~/.config/nvim/plugins/gitgutter.vim
+'''

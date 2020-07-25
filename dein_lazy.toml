@@ -220,6 +220,7 @@ source ~/.config/nvim/plugins/easymotion.vim
 '''
 
 [[plugins]]
+on_event = 'InsertLeave'
 repo = 'chemzqm/denite-git'
 
 [[plugins]]
@@ -255,20 +256,6 @@ on_event = 'InsertEnter'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_event = 'InsertEnter'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-on_event = 'InsertLeave'
-hook_source = '''
-source ~/.config/nvim/plugins/gitgutter.vim
-'''
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-on_event = 'InsertLeave'
-hook_source = '''
-source ~/.config/nvim/plugins/fugitive.vim
-'''
 
 # [[plugins]]
 # repo = 'w0rp/ale'

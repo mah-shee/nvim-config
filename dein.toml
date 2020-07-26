@@ -90,7 +90,6 @@ source ~/.config/nvim/plugins/fugitive.vim
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
-on_event = 'InsertLeave'
 hook_source = '''
 source ~/.config/nvim/plugins/gitgutter.vim
 '''

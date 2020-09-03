@@ -38,6 +38,7 @@ if has('vim_starting')
   call s:source_rc('init.rc.vim')
 endif
 
+call s:source_rc('dein_api_token.vim')
 call s:source_rc('dein.rc.vim')
 
 if has('vim_starting') && !empty(argv())

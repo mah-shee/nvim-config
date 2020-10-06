@@ -18,6 +18,8 @@ let g:LanguageClient_serverCommands = {
     \ 'typescript': ['typescript-language-server', '--stdio'],
     \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
     \ 'go': ['gopls']
+    \ 'c': ['clangd']
+    \ 'cpp': ['clangd']
     \ }
 
 augroup LanguageClient_config
@@ -25,7 +27,10 @@ augroup LanguageClient_config
     autocmd User LanguageClientStarted setlocal signcolumn=yes
     autocmd User LanguageClientStopped setlocal signcolumn=auto
 augroup END
-
+augroup LCHighlight
+    autocmd!
+    autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp,*.rs,*.js,*.ts,*.go  call LanguageClient#textDocument_documentHighlight()
+augroup END
 let $RUST_BACKTRACE = 1
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 let g:LanguageClient_devel = 1 " Use rust debug build
@@ -34,6 +39,7 @@ let g:LanguageClient_loggingLevel = 'INFO' " Use highest logging level
 let g:LanguageClient_loggingFile = expand('~/.local/share/nvim/LanguageClient.log')
 let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
 
+let g:LanguageClient_useVirtualText = 0
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_autoStop = 1
 nnoremap <silent> [Space]h :call LanguageClient_textDocument_hover()<CR>

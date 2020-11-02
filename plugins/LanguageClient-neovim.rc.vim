@@ -20,6 +20,7 @@ let g:LanguageClient_serverCommands = {
     \ 'go': ['gopls'],
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
+    \ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
     \ }
 
 augroup LanguageClient_config
@@ -33,6 +34,8 @@ augroup LCHighlight
     autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp,*.rs,*.js,*.ts,*.go  call LanguageClient#textDocument_documentHighlight()
 augroup END
 
+let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
+
 let $RUST_BACKTRACE = 1
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
 let g:LanguageClient_devel = 1 " Use rust debug build
@@ -43,12 +46,15 @@ let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.l
 
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_autoStop = 1
+nnoremap <F6> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> [Space]h :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> [Space]d :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> [Space]r :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> [Space]f :call LanguageClient_textDocument_formatting()<CR>
+nnoremap <silent> [Space]n :call LanguageClient#textDocument_references()<CR>
 nnoremap <silent> [Space]t :call LanguageClient_textDocument_typeDefinition()<CR>
 nnoremap <silent> [space]c :call LanguageClient_textDocument_codeAction()<CR> 
+nnoremap <silent> [Space]m :call LanguageClient#textDocument_documentSymbol()<CR>
 
 " augroup LCHighlight
 "     autocmd!

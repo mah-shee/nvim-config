@@ -34,7 +34,11 @@ augroup LCHighlight
     autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp,*.rs,*.js,*.ts,*.go  call LanguageClient#textDocument_documentHighlight()
 augroup END
 
-let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
+let g:LanguageClient_rootMarkers = {
+            \ 'rust' : ['Cargo.toml'],
+            \ 'haskell': ['*.cabal', 'stack.yaml'],
+            \ }
+
 
 let $RUST_BACKTRACE = 1
 autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()

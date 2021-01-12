@@ -21,6 +21,7 @@ let g:LanguageClient_serverCommands = {
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
     \ 'haskell': ['haskell-language-server-wrapper', '--lsp'],
+    \ 'dart': ['dart', '~/git/github.com/flutter/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot', '--lsp']
     \ }
 
 augroup LanguageClient_config

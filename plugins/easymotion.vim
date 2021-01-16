@@ -14,7 +14,8 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-nmap <Leader>s <Plug>(easymotion-s2)
+nmap m <Plug>(easymotion-s2)
+xmap m <Plug>(easymotion-s2)
 nmap <Leader>t <Plug>(easymotion-t2)
 
 map  <Leader>/ <Plug>(easymotion-sn)

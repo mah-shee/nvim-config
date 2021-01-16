@@ -15,6 +15,19 @@ repo = 'tbodt/deoplete-tabnine'
 on_event = 'InsertEnter'
 build = './install.sh'
 
+#[[plugins]]
+#repo = 'prabirshrestha/async.vim'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/vim-lsp'
+#
+#[[plugins]]
+#repo = 'mattn/vim-lsp-settings'
+#merged = 0
+#
+#[[plugins]]
+#repo = 'lighttiger2505/deoplete-vim-lsp'
+
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
@@ -48,6 +61,8 @@ repo = 'ayu-theme/ayu-vim'
 hook_add = '''
 set termguicolors
 let ayucolor="dark"
+autocmd ColorScheme * highlight Comment ctermfg=14 guifg=#8FA0B3
+autocmd ColorScheme * highlight LineNr ctermfg=14 guifg=#8FA0B3
 colorscheme ayu
 '''
 
@@ -65,4 +80,16 @@ source ~/.config/nvim/plugins/airline.vim
 repo = 'yggdroot/indentline'
 hook_add = '''
 let g:indentline_char = '¦'
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_source = '''
+source ~/.config/nvim/plugins/fugitive.vim
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_source = '''
+source ~/.config/nvim/plugins/gitgutter.vim
 '''

@@ -56,10 +56,23 @@ endif
 
 augroup MyAutoCmd
   autocmd!
+  autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *?
+        \ call vimrc#on_filetype()
   autocmd CursorHold *.toml syntax sync minlines=300
 augroup END
 
 call s:source_rc('keymap.rc.vim')
+
+if has('vim_starting')
+  call s:source_rc('init.rc.vim')
+endif
+
+call s:source_rc('dein_api_token.vim')
+call s:source_rc('dein.rc.vim')
+
+if has('vim_starting') && !empty(argv())
+  call vimrc#on_filetype()
+endif
 
 if !has('vim_starting')
   call dein#call_hook('source')

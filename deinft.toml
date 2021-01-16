@@ -53,6 +53,7 @@ let g:perl_fold = 1
 python = '''
 " Indent settings.
 " setlocal foldmethod=indent
+setlocal colorcolumn=79
 setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
@@ -99,8 +100,15 @@ setlocal iskeyword+=:,#
 
 qfreplace = 'setlocal nofoldenable'
 
-toml = 'syntax sync minlines=500'
-
+toml = '''
+syntax sync minlines=500
+setlocal expandtab
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal smarttab
+setlocal smartindent
+'''
 help = '''
 setlocal iskeyword+=:
 setlocal iskeyword+=#

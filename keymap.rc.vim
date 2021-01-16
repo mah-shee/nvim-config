@@ -52,3 +52,4 @@ nnoremap <silent> [Window]p  :<C-u>vsplit<CR>:wincmd w<CR>
 nnoremap <silent> [Window]o  :<C-u>only<CR>
 nnoremap <silent> <Tab>      :wincmd w<CR>
 nnoremap <silent><expr> q winnr('$') != 1 ? ':<C-u>close<CR>' : ""
+nnoremap [Space]l :source ~/.config/nvim/init.vim<CR>

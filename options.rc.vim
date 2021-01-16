@@ -10,6 +10,9 @@ set secure
 set hidden
 set number
 set autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set smarttab
 set shiftround
@@ -24,7 +27,6 @@ set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 set conceallevel=0
 set nohlsearch
 set signcolumn=yes
-
 " Disable modeline.
 set modelines=0
 set nomodeline
@@ -147,7 +149,7 @@ set display=lastline
 " For conceal.
 set conceallevel=2 concealcursor=niv
 
-set colorcolumn=79
+" set colorcolumn=79
 
 if exists('&inccommand')
   set inccommand=nosplit

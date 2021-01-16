@@ -49,7 +49,7 @@ if !has('vim_starting')
     call dein#call_hook('post_source')
 endif
 
-" call s:source_rc('options.rc.vim')
+call s:source_rc('options.rc.vim')
 
 set secure
 

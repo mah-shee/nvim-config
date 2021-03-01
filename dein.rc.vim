@@ -22,16 +22,16 @@ call dein#load_toml(s:dein_toml, {'lazy': 0})
 call dein#load_toml(s:dein_lazy_toml, {'lazy' : 1})
 call dein#load_toml(s:dein_ft_toml)
 
-let s:vimrc_local = findfile('vimrc_local.vim', '.;')
-if s:vimrc_local !=# ''
-  " Load develop version plugins.
-  call dein#local(fnamemodify(s:vimrc_local, ':h'),
-        \ {'frozen': 1, 'merged': 0},
-        \ ['vim*', 'nvim-*', 'unite-*', 'neco-*', '*.vim', 'denite.nvim'])
-  call dein#local(fnamemodify(s:vimrc_local, ':h'),
-        \ {'frozen': 1, 'merged': 0},
-        \ ['deoplete-*', '*.nvim'])
-endif
+" let s:vimrc_local = findfile('vimrc_local.vim', '.;')
+" if s:vimrc_local !=# ''
+"   " Load develop version plugins.
+"   call dein#local(fnamemodify(s:vimrc_local, ':h'),
+"         \ {'frozen': 1, 'merged': 0},
+"         \ ['vim*', 'nvim-*', 'unite-*', 'neco-*', '*.vim', 'denite.nvim'])
+"   call dein#local(fnamemodify(s:vimrc_local, ':h'),
+"         \ {'frozen': 1, 'merged': 0},
+"         \ ['deoplete-*', '*.nvim'])
+" endif
 
 call dein#end()
 call dein#save_state()

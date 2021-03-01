@@ -2,9 +2,8 @@
 :command! CH checkhealth
 :command! Tnew tabnew | terminal
 
-highlight! Normal ctermbg=NONE guibg=NONE
-highlight! NonText ctermbg=NONE guibg=NONE
-highlight! LineNr ctermbg=NONE guibg=NONE
+let g:python_host_prog = "/Users/masatoshi/.pyenv/shims/python"
+let g:python3_host_prog = "/Users/masatoshi/.pyenv/shims/python3"
 
 set secure
 set hidden
@@ -33,8 +32,6 @@ set nomodeline
 autocmd MyAutoCmd BufRead,BufWritePost *.txt setlocal modelines=5 modeline
 
 
-let g:python_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^2')/bin/python")
-let g:python3_host_prog = system("echo -n (pyenv root)/versions/(pyenv global | grep '^3')/bin/python")
 
 
 

@@ -31,18 +31,13 @@ build = './install.sh'
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
-build = 'cargo build'
+build = 'bash install.sh'
 hook_source = '''
 source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 ''' 
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
-on_event = 'TextYankPost'
-on_source = ['denite.nvim']
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'

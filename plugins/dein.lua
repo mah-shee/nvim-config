@@ -1,23 +1,33 @@
 local api = vim.api
 
-local dein_dir = vim.fn.expand('~/.cache/dein')
-local dein_repo_dir = dein_dir..'/repos/github.com/Shougo/dein.vim'
+-- 自動で dein#recache_runtimepath() する
+-- vim.api.nvim_set_var('dein#auto_recache', 1)
+-- neovimのリモートプラグインを遅延読み込み
+-- vim.api.nvim_set_var('dein#lazy_rplugins', 1)
+vim.api.nvim_set_var('dein#enable_notification', 1)
+vim.api.nvim_set_var('dein#install_max_processes', 16)
+vim.api.nvim_set_var('dein#install_message_type', 'none')
+vim.api.nvim_set_var('dein#enable_notification', 1)
 
 api.nvim_set_var('dein#install_github_api_token', os.getenv('DEIN_GITHUB_TOKEN'))
 
-if not string.find(api.nvim_get_option('runtimepath'), '/dein.vim') then
-  if not (vim.fn.isdirectory(dein_repo_dir) == 1) then
+
+local dein_dir = vim.fn.expand('~/.cache/dein')
+local dein_repo_dir = dein_dir..'/repos/github.com/Shougo/dein.vim'
+
+if not string.match(vim.o.runtimepath, '/dein.vim') then
+  if not (vim.fn.isdirectory(dein_repo_dir) ~= 1) then
     os.execute('git clone https://github.com/Shougo/dein.vim '..dein_repo_dir)
   end
-  api.nvim_set_option('runtimepath', dein_repo_dir..','..api.nvim_get_option('runtimepath'))
+  vim.o.runtimepath = dein_repo_dir..','..vim.o.runtimepath
 end
 
 if (vim.fn['dein#load_state'](dein_dir) == 1) then
-  vim.fn['dein#begin'](dein_dir)
   local rc_dir = vim.fn.expand('~/.config/nvim')
   local toml = rc_dir..'/dein.toml'
-  local filetype = = rc_dir..'deinft.toml'
+  local filetype = rc_dir..'/deinft.toml'
   local lazy_toml = rc_dir..'/dein_lazy.toml'
+  vim.fn['dein#begin'](dein_dir)
   vim.fn['dein#load_toml'](toml, { lazy = 0 })
   vim.fn['dein#load_toml'](filetype, { lazy = 0 })
   vim.fn['dein#load_toml'](lazy_toml, { lazy = 1 })
@@ -38,4 +48,4 @@ end
 vim.g['dein#install_progress_type'] = 'title'
 vim.g['dein#enable_notification'] = 1
 vim.g['dein#notification_icon'] = '~/.config/nvim/signs/warn.png'
-vim g.['dein#install_log_filename'] = '~/dein.log'
+vim.g['dein#install_log_filename'] = '~/dein.log'

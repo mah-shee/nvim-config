@@ -18,9 +18,8 @@ for var, val in pairs(vars) do
   api.nvim_set_var(var, val)
 end
 
-require('core.options')
-require('core.keys')
-require('plugins.dein')
+require('options')
+require('keys')
 
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax on')

@@ -15,26 +15,19 @@ repo = 'tbodt/deoplete-tabnine'
 on_event = 'InsertEnter'
 build = './install.sh'
 
-#[[plugins]]
-#repo = 'prabirshrestha/async.vim'
-#
-#[[plugins]]
-#repo = 'prabirshrestha/vim-lsp'
-#
-#[[plugins]]
-#repo = 'mattn/vim-lsp-settings'
-#merged = 0
-#
-#[[plugins]]
-#repo = 'lighttiger2505/deoplete-vim-lsp'
+# [[plugins]]
+# repo = 'autozimu/LanguageClient-neovim'
+# rev = 'next'
+# build = 'bash install.sh'
+# hook_source = '''
+# source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
+# ''' 
 
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-hook_source = '''
-source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
-''' 
+repo='neovim/nvim-lspconfig'
+
+[[plugins]]
+repo='deoplete-plugins/deoplete-lsp'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -88,3 +81,6 @@ repo = 'airblade/vim-gitgutter'
 hook_source = '''
 source ~/.config/nvim/plugins/gitgutter.vim
 '''
+
+[[plugins]]
+repo='nvim-treesitter/nvim-treesitter'

@@ -60,7 +60,7 @@ nnoremap <silent> [Space]r :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> [Space]f :call LanguageClient_textDocument_formatting()<CR>
 nnoremap <silent> [Space]n :call LanguageClient#textDocument_references()<CR>
 nnoremap <silent> [Space]t :call LanguageClient_textDocument_typeDefinition()<CR>
-nnoremap <silent> [space]c :call LanguageClient_textDocument_codeAction()<CR> 
+nnoremap <silent> [Space]c :call LanguageClient_textDocument_codeAction()<CR> 
 nnoremap <silent> [Space]m :call LanguageClient#textDocument_documentSymbol()<CR>
 
 " augroup LCHighlight

@@ -39,8 +39,6 @@ api.nvim_set_keymap('n', '[Space]ar', ':<C-u>call vimrc#toggle_option("autoread"
 ]]
 api.nvim_set_keymap('n', '[Space]w', ':<C-u>call vimrc#toggle_option("wrap")<CR>', {noremap = true, silent = false})
 
--- Easily edit .vimrc
--- nnoremap <silent> [Space]ev  :<C-u>edit $MYVIMRC<CR>
 
 -- Useful save mappings.
 api.nvim_set_keymap('n', '<Leader><Leader>', ':<C-u>update<CR>', {noremap = true, silent = false})
@@ -52,5 +50,17 @@ api.nvim_set_keymap('n', 's', '[Window]', {noremap=false, silent=false})
 api.nvim_set_keymap('n', '[Window]p', ':<C-u>vsplit<CR>:wincmd w<CR>', {noremap = true, silent = true})
 api.nvim_set_keymap('n', '[Window]o', ':<C-u>only<CR>', {noremap = true, silent = true})
 api.nvim_set_keymap('n', '<Tab>', ':wincmd w<CR>', {noremap = true, silent = true})
--- nnoremap <silent><expr> q winnr('$') != 1 ? ':<C-u>close<CR>' : ""
 api.nvim_set_keymap('n', '[Space]l', ':luafile ~/.config/nvim/init.lua<CR>', {noremap = true, silent = false})
+
+function _G.smart_close() 
+      return vim.fn.winnr("$") ~= 1 and ':'..t'<C-u>'..'close'..t'<CR>' or ""
+end
+
+function t(str)
+      return api.nvim_replace_termcodes(str, true, true, true)
+end
+
+api.nvim_set_keymap('n', 'q', 'v:lua.smart_close()'or "", {expr=true, noremap = true})
+
+-- Easily edit .vimrc
+api.nvim_set_keymap('n', '[Space]ev', ':<C-u>edit $MYVIMRC<CR>', {noremap = true, silent =true})

@@ -52,6 +52,12 @@ let ayucolor="dark"
 autocmd ColorScheme * highlight Comment ctermfg=14 guifg=#8FA0B3
 autocmd ColorScheme * highlight LineNr ctermfg=14 guifg=#8FA0B3
 colorscheme ayu
+highlight Normal ctermbg=NONE guibg=NONE
+highlight NonText ctermbg=NONE guibg=NONE
+highlight SpecialKey ctermbg=NONE guibg=NONE
+highlight LineNr ctermbg=NONE guibg=NONE
+highlight Folded ctermbg=NONE guibg=NONE
+highlight EndOfBuffer ctermbg=NONE guibg=NONE
 '''
 
 [[plugins]]

@@ -1,6 +1,6 @@
 vim.o.secure=false
 vim.o.hidden=false
-vim.o.number=false
+vim.wo.number=true
 vim.o.autoindent=true
 vim.o.tabstop=4
 vim.o.softtabstop=4
@@ -12,13 +12,12 @@ vim.o.splitright=false
 vim.o.cursorline=false
 -- vim.o.clipboard=unnamed
 vim.o.textwidth=0 
--- vim.o.listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+vim.wo.listchars='tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲'
 vim.o.conceallevel=0
 -- vim.o.signcolumn=yes
 -- Disable modeline.
 vim.o.modelines=0
 -- autocmd MyAutoCmd BufRead,BufWritePost *.txt setlocal modelines=5 modeline
-
 
 
 
@@ -139,10 +138,10 @@ vim.o.helpheight=12
 -- vim.o.display+=uhex
 
 -- For conceal.
-vim.o.conceallevel=2 
+-- vim.o.conceallevel=2 
 -- vim.o.concealcursor=niv
 
--- vim.o.colorcolumn=79
+-- vim.wo.colorcolumn=79
 --[[
 if exists('&inccommand')
   vim.o.inccommand=nosplit

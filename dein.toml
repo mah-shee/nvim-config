@@ -68,10 +68,7 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_add = '''
-source ~/.config/nvim/plugins/airline.vim
-'''
+repo='hoob3rt/lualine.nvim'
 
 [[plugins]]
 repo = 'yggdroot/indentline'

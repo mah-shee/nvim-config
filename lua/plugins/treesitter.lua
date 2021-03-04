@@ -8,7 +8,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
 
     -- highlightの機能を無効にする、filetypeを指定します。
-    disable = { "bash", "c" },
+    disable = { "bash", "c" ,"toml"},
   },
 
   incremental_selection = {

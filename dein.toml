@@ -23,8 +23,14 @@ build = './install.sh'
 # source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 # ''' 
 
+# [[plugins]]
+# repo='phaazon/hop.nvim'
+
 [[plugins]]
-repo='phaazon/hop.nvim'
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+source ~/.config/nvim/plugins/easymotion.vim
+'''
 
 [[plugins]]
 repo='neovim/nvim-lspconfig'

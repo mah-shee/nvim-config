@@ -1,8 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- 設定された言語のparserがインストールされていない場合、
   -- インストールします。
-  ensure_installed = {'ruby', 'lua', 'rust', 'go', 'typescript', 'tsx'},
-
   highlight = {
     -- `false` の場合、highlight機能を動かしません。
     enable = true,

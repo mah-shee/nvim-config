@@ -1,7 +1,7 @@
 local lualine = require('lualine')
 lualine.status{
 	options = {
-	theme = 'gruvbox',
+	theme = 'ayu_dark',
 	section_separators = {'', ''},
 	component_separators = {'', ''},
 	icons_enabled = true,

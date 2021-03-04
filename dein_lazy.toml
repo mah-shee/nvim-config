@@ -212,16 +212,10 @@ if has('conceal')
 endif
 '''
 
-[[plugins]]
-repo = 'easymotion/vim-easymotion'
-on_event = 'InsertLeave'
-hook_add = '''
-source ~/.config/nvim/plugins/easymotion.vim
-'''
 
 [[plugins]]
-on_event = 'InsertLeave'
 repo = 'chemzqm/denite-git'
+on_event = 'InsertLeave'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -245,9 +239,9 @@ hook_source = '''
 nnoremap <F5> :GundoToggle<CR>
 '''
 
-[[plugins]]
-repo = 'tpope/vim-endwise'
-on_event = 'InsertEnter'
+# [[plugins]]
+# repo = 'tpope/vim-endwise'
+# on_event = 'InsertEnter'
 
 [[plugins]]
 repo = 'tpope/vim-surround'

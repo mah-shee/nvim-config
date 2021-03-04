@@ -24,6 +24,9 @@ build = './install.sh'
 # ''' 
 
 [[plugins]]
+repo='phaazon/hop.nvim'
+
+[[plugins]]
 repo='neovim/nvim-lspconfig'
 
 [[plugins]]

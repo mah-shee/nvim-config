@@ -18,11 +18,11 @@ for var, val in pairs(vars) do
   api.nvim_set_var(var, val)
 end
 
+vim.cmd('filetype plugin indent on')
+vim.cmd('syntax on')
+
 require('options')
 require('keys')
 require('plugins.dein')
 require('plugins.lsp_config')
 require('plugins.treesitter')
-
-vim.cmd('filetype plugin indent on')
-vim.cmd('syntax on')

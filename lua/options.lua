@@ -18,7 +18,7 @@ vim.o.conceallevel=0
 -- Disable modeline.
 vim.o.modelines=0
 -- autocmd MyAutoCmd BufRead,BufWritePost *.txt setlocal modelines=5 modeline
-
+vim.o.pumblend = 20
 
 
 

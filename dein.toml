@@ -96,3 +96,12 @@ source ~/.config/nvim/plugins/gitgutter.vim
 
 [[plugins]]
 repo='nvim-treesitter/nvim-treesitter'
+
+[[plugins]]
+repo = 'nvim-telescope/telescope.nvim'
+
+[[plugins]]
+repo='nvim-lua/popup.nvim'
+
+[[plugins]]
+repo='nvim-lua/plenary.nvim'

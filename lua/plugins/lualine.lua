@@ -24,4 +24,3 @@ lualine.status{
 	},
 	extensions = { 'fzf' }
 	}
-

@@ -246,9 +246,9 @@ nnoremap <F5> :GundoToggle<CR>
 repo = 'tpope/vim-surround'
 on_event = 'InsertEnter'
 
-# [[plugins]]
-# repo='cohama/lexima.vim'
-# on_event = 'InsertEnter'
+[[plugins]]
+repo='cohama/lexima.vim'
+on_event = 'InsertEnter'
 
 # [[plugins]]
 # repo = 'w0rp/ale'

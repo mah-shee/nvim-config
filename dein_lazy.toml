@@ -195,21 +195,21 @@ nnoremap <buffer><silent> [Space]gA
 \ :<C-u>call deol#send('git commit --amend')<CR>
 '''
 
-[[plugins]]
-repo = 'Shougo/neosnippet'
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-depends = ['neosnippet-snippets', 'context_filetype.vim']
-hook_source = '''
-let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
-let g:neosnippet#enable_snipmate_compatibility = 1
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-if has('conceal')
-    set conceallevel=2 concealcursor=niv
-endif
-'''
+# [[plugins]]
+# repo='Shougo/neosnippet.vim'
+# on_event = 'InsertCharPre'
+# on_ft = 'snippet'
+# depends = ['neosnippet-snippets', 'context_filetype.vim']
+# hook_source = '''
+# let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
+# let g:neosnippet#enable_snipmate_compatibility = 1
+# imap <C-k> <Plug>(neosnippet_expand_or_jump)
+# smap <C-k> <Plug>(neosnippet_expand_or_jump)
+# xmap <C-k> <Plug>(neosnippet_expand_target)
+# if has('conceal')
+#     set conceallevel=2 concealcursor=niv
+# endif
+# '''
 
 
 [[plugins]]
@@ -246,9 +246,9 @@ nnoremap <F5> :GundoToggle<CR>
 repo = 'tpope/vim-surround'
 on_event = 'InsertEnter'
 
-[[plugins]]
-repo = 'cohama/lexima.vim'
-on_event = 'InsertEnter'
+# [[plugins]]
+# repo='cohama/lexima.vim'
+# on_event = 'InsertEnter'
 
 # [[plugins]]
 # repo = 'w0rp/ale'

@@ -29,7 +29,7 @@ nnoremap <silent> ft :<C-u>Denite filetype<CR>
 nnoremap <silent> <C-t> :<C-u>Denite
             \ -cursor-pos=`tabpagenr()-1` deol:fish<CR>
 nnoremap <silent> <C-k> :<C-u>Denite change jump<CR>
-nnoremap <silent> <C-h> :<C-u>DeniteCursorWord help<CR>
+" nnoremap <silent> <C-h> :<C-u>DeniteCursorWord help<CR>
 nnoremap <silent> [Space]gs :<C-u>Denite gitstatus<CR>
 nnoremap <silent> ;;
             \ :<C-u>Denite command command_history<CR>

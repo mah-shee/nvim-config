@@ -30,7 +30,6 @@ let g:tex_flavor = 'latex'
 let python_highlight_all = 1
 " http://mattn.kaoriya.net/software/vim/20140523124903.htm
 let g:markdown_fenced_languages = [
-      \  'cofeee',
       \  'css',
       \  'erb=eruby',
       \  'javascript',

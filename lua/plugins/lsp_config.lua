@@ -45,20 +45,44 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Use a loop to conveniently both setup defined servers 
+-- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = { "pyright", "tsserver"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
-end 
+end
 
-nvim_lsp.rls.setup{
-  cmd = {"rustup", "run", "nightly", "rls"};
-  filetypes = { "rust" };
-  root_dir = nvim_lsp.util.root_pattern("Cargo.toml");
+-- nvim_lsp.rls.setup{
+--   cmd = {"rustup", "run", "nightly", "rls"};
+--   filetypes = { "rust" };
+--   root_dir = nvim_lsp.util.root_pattern("Cargo.toml");
+--   on_attach = on_attach;
+-- }
+
+nvim_lsp.rust_analyzer.setup({
+    cmd = {"rustup", "run", "nightly", "rust-analyzer"};
+    filetypes = { "rust" };
+    root_dir = nvim_lsp.util.root_pattern("Cargo.toml");
+    on_attach=on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            assist = {
+                importMergeBehavior = "last",
+                importPrefix = "by_self",
+            },
+            cargo = {
+                loadOutDirsFromCheck = true
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+})
+nvim_lsp["gopls"].setup{
+  filetypes = { "go" };
   on_attach = on_attach;
 }
-
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"

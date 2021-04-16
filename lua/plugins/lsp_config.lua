@@ -45,6 +45,12 @@ local on_attach = function(client, bufnr)
   end
 end
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+ vim.lsp.diagnostic.on_publish_diagnostics, {
+   underline = false, -- Enable underline, use default values
+--    virtual_text = false -- Enable virtual text only on Warning or above, override spacing to 2
+ }
+)
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = { "pyright", "tsserver"}
@@ -79,10 +85,50 @@ nvim_lsp.rust_analyzer.setup({
         }
     }
 })
-nvim_lsp["gopls"].setup{
-  filetypes = { "go" };
+nvim_lsp.gopls.setup{
   on_attach = on_attach;
+  root_dir = nvim_lsp.util.root_pattern('.git');
+  cmd = {"gopls", "serve"};
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+      },
+    },
 }
+function Goimports(timeout_ms)
+  local context = { source = { organizeImports = true } }
+  vim.validate { context = { context, "t", true } }
+
+  local params = vim.lsp.util.make_range_params()
+  params.context = context
+
+  -- See the implementation of the textDocument/codeAction callback
+  -- (lua/vim/lsp/handler.lua) for how to do this properly.
+  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
+  if not result or next(result) == nil then return end
+  local actions = result[1].result
+  if not actions then return end
+  local action = actions[1]
+
+  -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
+  -- is a CodeAction, it can have either an edit, a command or both. Edits
+  -- should be executed first.
+  if action.edit or type(action.command) == "table" then
+    if action.edit then
+      vim.lsp.util.apply_workspace_edit(action.edit)
+    end
+    if type(action.command) == "table" then
+      vim.lsp.buf.execute_command(action.command)
+    end
+  else
+    vim.lsp.buf.execute_command(action)
+  end
+end
+
+vim.api.nvim_exec("autocmd BufWritePre *.go lua Goimports(1000)",false)
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"

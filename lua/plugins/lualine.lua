@@ -1,5 +1,5 @@
 local lualine = require('lualine')
-lualine.status{
+lualine.setup{
 	options = {
 	theme = 'ayu_dark',
 	section_separators = {'', ''},
@@ -21,6 +21,5 @@ lualine.status{
 	lualine_x = { 'location' },
 	lualine_y = {  },
 	lualine_z = {   }
-	},
-	extensions = { 'fzf' }
 	}
+}

@@ -21,7 +21,7 @@ vim.o.modelines=0
 vim.o.pumblend = 20
 vim.o.bs="indent,eol,start"
 vim.o.completeopt ="menuone,noinsert,noselect"
-
+vim.o.clipboard = "unnamed,unnamedplus"
 
 -- Highlight <>.
 -- vim.o.matchpairs+=<:>

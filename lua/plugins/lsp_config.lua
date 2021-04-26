@@ -87,7 +87,7 @@ nvim_lsp.rust_analyzer.setup({
 })
 nvim_lsp.gopls.setup{
   on_attach = on_attach;
-  root_dir = nvim_lsp.util.root_pattern('.git');
+  root_dir = nvim_lsp.util.root_pattern('go.mod');
   cmd = {"gopls", "serve"};
     settings = {
       gopls = {

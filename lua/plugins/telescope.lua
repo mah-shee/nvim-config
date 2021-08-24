@@ -9,7 +9,6 @@ require('telescope').setup{
       '--column',
       '--smart-case'
     },
-    prompt_position = "bottom",
     prompt_prefix = "> ",
     selection_caret = "> ",
     entry_prefix = "  ",
@@ -17,23 +16,11 @@ require('telescope').setup{
     selection_strategy = "reset",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
-    layout_defaults = {
-      horizontal = {
-        mirror = false,
-      },
-      vertical = {
-        mirror = false,
-      },
-    },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzy_sorter,
-    shorten_path = true,
+    path_display= true,
     winblend = 0,
-    width = 0.75,
-    preview_cutoff = 120,
-    results_height = 1,
-    results_width = 0.8,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
     color_devicons = true,
@@ -54,4 +41,4 @@ require('telescope').setup{
 }
 
 local api = vim.api
-api.nvim_set_keymap('n', '<Leader>g', ':Telescope live_grep<CR>', {noremap=true, silent=false})
+api.nvim_set_keymap('n', '/', ':Telescope live_grep<CR>', {noremap=true, silent=false})

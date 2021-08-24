@@ -1,36 +1,36 @@
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_source = 'source ~/.config/nvim/plugins/denite-source.vim'
-hook_add = 'source ~/.config/nvim/plugins/denite-add.vim'
-
-[plugins.ftplugin]
-denite = '''
-" Define mappings
-nnoremap <silent><buffer><expr> <CR>
-\ denite#do_map('do_action')
-nnoremap <silent><buffer><expr> a
-\ denite#do_map('choose_action')
-nnoremap <silent><buffer><expr> d
-\ denite#do_map('do_action', 'delete')
-nnoremap <silent><buffer><expr> p
-\ denite#do_map('do_action', 'preview')
-nnoremap <silent><buffer><expr> q
-\ denite#do_map('quit')
-nnoremap <silent><buffer><expr> '
-\ denite#do_map('quick_move')
-nnoremap <silent><buffer><expr> i
-\ denite#do_map('open_filter_buffer')
-nnoremap <silent><buffer><expr> <Space>
-\ denite#do_map('toggle_select').'j'
-'''
-denite-filter = '''
-" 一つ上のディレクトリを開き直す
-inoremap <silent><buffer><expr> <BS> denite#do_map('move_up_path')
-" imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-" Deniteを閉じる
-inoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
-nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
-'''
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# hook_source = 'source ~/.config/nvim/plugins/denite-source.vim'
+# hook_add = 'source ~/.config/nvim/plugins/denite-add.vim'
+# 
+# [plugins.ftplugin]
+# denite = '''
+# " Define mappings
+# nnoremap <silent><buffer><expr> <CR>
+# \ denite#do_map('do_action')
+# nnoremap <silent><buffer><expr> a
+# \ denite#do_map('choose_action')
+# nnoremap <silent><buffer><expr> d
+# \ denite#do_map('do_action', 'delete')
+# nnoremap <silent><buffer><expr> p
+# \ denite#do_map('do_action', 'preview')
+# nnoremap <silent><buffer><expr> q
+# \ denite#do_map('quit')
+# nnoremap <silent><buffer><expr> '
+# \ denite#do_map('quick_move')
+# nnoremap <silent><buffer><expr> i
+# \ denite#do_map('open_filter_buffer')
+# nnoremap <silent><buffer><expr> <Space>
+# \ denite#do_map('toggle_select').'j'
+# '''
+# denite-filter = '''
+# " 一つ上のディレクトリを開き直す
+# inoremap <silent><buffer><expr> <BS> denite#do_map('move_up_path')
+# " imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+# " Deniteを閉じる
+# inoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+# nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+# '''
 
 [[plugins]]
 repo = 'ncm2/float-preview.nvim'
@@ -212,9 +212,9 @@ nnoremap <buffer><silent> [Space]gA
 # '''
 
 
-[[plugins]]
-repo = 'chemzqm/denite-git'
-on_event = 'InsertLeave'
+# [[plugins]]
+# repo = 'chemzqm/denite-git'
+# on_event = 'InsertLeave'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -261,9 +261,9 @@ on_event = 'InsertEnter'
 repo = 'rhysd/vim-gfm-syntax'
 on_ft = 'markdown'
 
-[[plugins]]
-repo = 'Jagua/vim-denite-ghq'
-on_source = 'denite.nvim'
+# [[plugins]]
+# repo = 'Jagua/vim-denite-ghq'
+# on_source = 'denite.nvim'
 
 [[plugins]]
 repo = 'raghur/fruzzy'

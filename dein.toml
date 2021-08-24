@@ -2,18 +2,24 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-on_event = 'InsertEnter'
-hook_add = '''
-source ~/.config/nvim/plugins/deoplete.vim
-call deoplete#enable()
-'''
+repo = 'Shougo/ddc.vim'
 
 [[plugins]]
-repo = 'tbodt/deoplete-tabnine' 
-on_event = 'InsertEnter'
-build = './install.sh'
+repo = 'vim-denops/denops.vim'
+
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# depends = 'context_filetype.vim'
+# on_event = 'InsertEnter'
+# hook_add = '''
+# source ~/.config/nvim/plugins/deoplete.vim
+# call deoplete#enable()
+# '''
+# 
+# [[plugins]]
+# repo = 'tbodt/deoplete-tabnine' 
+# on_event = 'InsertEnter'
+# build = './install.sh'
 
 # [[plugins]]
 # repo = 'autozimu/LanguageClient-neovim'
@@ -35,8 +41,8 @@ source ~/.config/nvim/plugins/easymotion.vim
 [[plugins]]
 repo='neovim/nvim-lspconfig'
 
-[[plugins]]
-repo='deoplete-plugins/deoplete-lsp'
+# [[plugins]]
+# repo='deoplete-plugins/deoplete-lsp'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

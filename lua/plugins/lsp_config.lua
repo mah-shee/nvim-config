@@ -1,4 +1,16 @@
 local nvim_lsp = require('lspconfig')
+-- define an chain complete list
+-- local chain_complete_list = {
+--   default = {
+--     {complete_items = {'lsp', 'snippet'}},
+--     {complete_items = {'path'}, triggered_only = {'/'}},
+--     {complete_items = {'buffers'}},
+--   },
+--   string = {
+--     {complete_items = {'path'}, triggered_only = {'/'}},
+--   },
+--   comment = {},
+-- }
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -30,19 +42,25 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "[Space]f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
+  -- passing in a table with on_attach function
+--   require'completion'.on_attach({
+--       sorting = 'alphabet',
+--       matching_strategy_list = {'exact', 'fuzzy'},
+--       chain_complete_list = chain_complete_list,
+--     })
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
-  end
+  -- if client.resolved_capabilities.document_highlight then
+    -- vim.api.nvim_exec([[
+    --   hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+    --   hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+    --   hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+    --   augroup lsp_document_highlight
+    --     autocmd! * <buffer>
+    --     autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+    --     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    --   augroup END
+    -- ]], false)
+  -- end
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -85,8 +103,8 @@ nvim_lsp.rust_analyzer.setup({
         }
     }
 })
-nvim_lsp.gopls.setup{
-  on_attach = on_attach;
+
+nvim_lsp.gopls.setup{ on_attach = on_attach;
   root_dir = nvim_lsp.util.root_pattern('go.mod');
   cmd = {"gopls", "serve"};
     settings = {
@@ -130,7 +148,7 @@ end
 
 vim.api.nvim_exec("autocmd BufWritePre *.go lua Goimports(1000)",false)
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
+local sumneko_root_path = '/Users/masa/ghq/github.com/sumneko/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/macOS/lua-language-server"
 nvim_lsp.sumneko_lua.setup{
   cmd = {sumneko_binary, "-E", sumneko_root_path.."/main.lua"};
@@ -157,3 +175,12 @@ nvim_lsp.sumneko_lua.setup{
   },
   on_attach = on_attach;
 }
+
+local lsp_installer = require("nvim-lsp-installer")
+
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+    opts.on_attach = on_attach
+
+    server:setup(opts)
+end)

@@ -9,8 +9,8 @@ vim.cmd('syntax off')
 
 
 local vars = {
-  python_host_prog = '/Users/masatoshi/.pyenv/shims/python',
-  python3_host_prog = '/Users/masatoshi/.pyenv/shims/python3',
+  python_host_prog = '/Users/masa/.pyenv/shims/python',
+  python3_host_prog = '/Users/masa/.pyenv/shims/python3',
   loaded_matchparen = 1
 }
 
@@ -28,3 +28,4 @@ require('plugins.lsp_config')
 require('plugins.treesitter')
 require('plugins.lualine')
 require('plugins.telescope')
+require('plugins.ddc')

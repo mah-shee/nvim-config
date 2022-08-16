@@ -1,7 +1,7 @@
 local api = vim.api
 
 -- 自動で dein#recache_runtimepath() する
--- vim.api.nvim_set_var('dein#auto_recache', 1)
+vim.api.nvim_set_var('dein#auto_recache', 1)
 -- neovimのリモートプラグインを遅延読み込み
 -- vim.api.nvim_set_var('dein#lazy_rplugins', 1)
 vim.api.nvim_set_var('dein#enable_notification', 1)

@@ -2,35 +2,10 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/ddc.vim'
-
-[[plugins]]
 repo = 'vim-denops/denops.vim'
 
-# [[plugins]]
-# repo = 'Shougo/deoplete.nvim'
-# depends = 'context_filetype.vim'
-# on_event = 'InsertEnter'
-# hook_add = '''
-# source ~/.config/nvim/plugins/deoplete.vim
-# call deoplete#enable()
-# '''
-# 
-# [[plugins]]
-# repo = 'tbodt/deoplete-tabnine' 
-# on_event = 'InsertEnter'
-# build = './install.sh'
-
-# [[plugins]]
-# repo = 'autozimu/LanguageClient-neovim'
-# rev = 'next'
-# build = 'bash install.sh'
-# hook_source = '''
-# source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
-# ''' 
-
-# [[plugins]]
-# repo='phaazon/hop.nvim'
+[[plugins]]
+repo= 'williamboman/nvim-lsp-installer'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
@@ -40,9 +15,6 @@ source ~/.config/nvim/plugins/easymotion.vim
 
 [[plugins]]
 repo='neovim/nvim-lspconfig'
-
-# [[plugins]]
-# repo='deoplete-plugins/deoplete-lsp'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
@@ -111,3 +83,35 @@ repo='nvim-lua/popup.nvim'
 
 [[plugins]]
 repo='nvim-lua/plenary.nvim'
+
+[[plugins]]
+repo = 'whonore/Coqtail'
+on_ft = "coq"
+
+[[plugins]]
+repo = 'skanehira/preview-uml.vim'
+hook_add = '''
+let g:preview_uml_url='http://localhost:8888'
+'''
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+[[plugins]]
+repo = 'Shougo/ddc-nvim-lsp'
+[[plugins]]
+repo = 'Shougo/ddc-matcher_head'
+[[plugins]]
+repo = 'Shougo/ddc-sorter_rank'
+
+[[plugins]]
+repo = 'matsui54/denops-signature_help'
+on_source = 'ddc.vim'
+hook_source = '''
+ call signature_help#enable()
+'''
+
+[[plugins]]
+repo = 'matsui54/denops-popup-preview.vim'
+on_source = 'ddc.vim'
+hook_source = '''
+call popup_preview#enable()
+'''

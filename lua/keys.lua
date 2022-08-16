@@ -52,7 +52,7 @@ api.nvim_set_keymap('n', '[Window]o', ':<C-u>only<CR>', {noremap = true, silent 
 api.nvim_set_keymap('n', '<Tab>', ':wincmd w<CR>', {noremap = true, silent = true})
 api.nvim_set_keymap('n', '[Space]l', ':luafile ~/.config/nvim/init.lua<CR>', {noremap = true, silent = false})
 
-function _G.smart_close() 
+function _G.smart_close()
       return vim.fn.winnr("$") ~= 1 and ':'..t'<C-u>'..'close'..t'<CR>' or ""
 end
 

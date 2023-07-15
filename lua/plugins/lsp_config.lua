@@ -1,4 +1,43 @@
 local nvim_lsp = require('lspconfig')
+ local mason = require('mason')
+ mason.setup({
+   ui = {
+     icons = {
+       package_installed = "✓",
+       package_pending = "➜",
+       package_uninstalled = "✗"
+     }
+   }
+ })
+
+require('mason-lspconfig').setup_handlers({ function(server)
+  local opt = {
+    -- -- Function executed when the LSP server startup
+    on_attach = function(client, bufnr)
+      local opts = { noremap=true, silent=true }
+      vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+      vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
+
+      vim.cmd [[
+        set updatetime=500
+        highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+        highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+        highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+        augroup lsp_document_highlight
+          autocmd! * <buffer>
+          autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+          autocmd CursorMoved,CursorMovedI <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+      ]]
+
+    end,
+    capabilities = require('cmp_nvim_lsp').default_capabilities(
+      vim.lsp.protocol.make_client_capabilities()
+    )
+  }
+  require('lspconfig')[server].setup(opt)
+end })
+
 -- define an chain complete list
 -- local chain_complete_list = {
 --   default = {
@@ -11,6 +50,63 @@ local nvim_lsp = require('lspconfig')
 --   },
 --   comment = {},
 -- }
+
+-- keyboard shortcut
+vim.keymap.set('n', '[Space]h',  '<cmd>lua vim.lsp.buf.hover()<CR>')
+vim.keymap.set('n', '[Space]f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+vim.keymap.set('n', '[Space]n', '<cmd>lua vim.lsp.buf.references()<CR>')
+vim.keymap.set('n', '[Space]d', '<cmd>lua vim.lsp.buf.definition()<CR>')
+vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+vim.keymap.set('n', '[Space]t', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+vim.keymap.set('n', '[Space]r', '<cmd>lua vim.lsp.buf.rename()<CR>')
+vim.keymap.set('n', '[Space]a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set('n', '[Space]e', '<cmd>lua vim.diagnostic.open_float()<CR>')
+vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+-- LSP handlers
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+)
+
+-- Reference highlight
+-- vim.cmd [[
+-- set updatetime=500
+-- highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- augroup lsp_document_highlight
+--   autocmd!
+--   autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
+--   autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
+-- augroup END
+-- ]]
+
+-- 3. completion (hrsh7th/nvim-cmp)
+local cmp = require("cmp")
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  sources = {
+    { name = "nvim_lsp" },
+    -- { name = "buffer" },
+    -- { name = "path" },
+  },
+  mapping = cmp.mapping.preset.insert({
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
+    ['<C-l>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm { select = true },
+  }),
+  experimental = {
+    ghost_text = true,
+  },
+})
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -30,10 +126,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[Space]t', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '[Space]r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '[Space]n', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '[Space]e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '[Space]q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '[Space]e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '[Space]q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap("n", "[Space]f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
@@ -71,10 +165,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 )
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "tsserver"}
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
-end
+-- local servers = { "pyright", "tsserver"}
+-- for _, lsp in ipairs(servers) do
+--   nvim_lsp[lsp].setup { on_attach = on_attach }
+-- end
 
 -- nvim_lsp.rls.setup{
 --   cmd = {"rustup", "run", "nightly", "rls"};
@@ -176,11 +270,3 @@ nvim_lsp.sumneko_lua.setup{
   on_attach = on_attach;
 }
 
-local lsp_installer = require("nvim-lsp-installer")
-
-lsp_installer.on_server_ready(function(server)
-    local opts = {}
-    opts.on_attach = on_attach
-
-    server:setup(opts)
-end)

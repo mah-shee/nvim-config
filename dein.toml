@@ -4,8 +4,8 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'vim-denops/denops.vim'
 
-[[plugins]]
-repo= 'williamboman/nvim-lsp-installer'
+# [[plugins]]
+# repo= 'williamboman/nvim-lsp-installer'
 
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
@@ -14,7 +14,22 @@ source ~/.config/nvim/plugins/easymotion.vim
 '''
 
 [[plugins]]
+repo = 'github/copilot.vim'
+
+[[plugins]]
 repo='neovim/nvim-lspconfig'
+
+[[plugins]]
+repo= 'williamboman/mason.nvim'
+
+[[plugins]]
+repo= 'williamboman/mason-lspconfig.nvim'
+
+[[plugins]]
+repo= 'hrsh7th/nvim-cmp'
+
+[[plugins]]
+repo= 'hrsh7th/cmp-nvim-lsp'
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'

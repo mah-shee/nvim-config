@@ -32,10 +32,10 @@ augroup LanguageClient_config
     autocmd User LanguageClientStopped setlocal signcolumn=auto
 augroup END
 
-augroup LCHighlight
-    autocmd!
-    autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp,*.rs,*.js,*.ts,*.go  call LanguageClient#textDocument_documentHighlight()
-augroup END
+" augroup LCHighlight
+"     autocmd!
+"     autocmd CursorHold,CursorHoldI *.py,*.c,*.cpp,*.rs,*.js,*.ts,*.go  call LanguageClient#textDocument_documentHighlight()
+" augroup END
 
 let g:LanguageClient_rootMarkers = {
             \ 'rust' : ['Cargo.toml'],

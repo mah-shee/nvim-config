@@ -39,7 +39,7 @@ vim.o.signcolumn="yes"
 -- vim.o.timeout timeoutlen=3000 ttimeoutlen=100
 
 -- CursorHold time.
-vim.o.updatetime=100
+vim.o.updatetime=50
 
 -- Set swap directory.
 -- vim.o.directory-=.

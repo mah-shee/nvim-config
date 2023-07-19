@@ -39,6 +39,20 @@ api.nvim_set_keymap('n', '[Space]ar', ':<C-u>call vimrc#toggle_option("autoread"
 ]]
 api.nvim_set_keymap('n', '[Space]w', ':<C-u>call vimrc#toggle_option("wrap")<CR>', {noremap = true, silent = false})
 
+-- Start Terminal
+api.nvim_set_keymap('n', '[Window]t', ':<C-u>T<CR>', {noremap = true, silent = false})
+vim.cmd [[
+  command! T lua TerminalCommand()
+]]
+
+function _G.TerminalCommand()
+  vim.cmd('split')
+  vim.cmd('wincmd j')
+  vim.cmd('resize 20')
+  vim.cmd('terminal ')
+end
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true})
+
 
 -- Useful save mappings.
 api.nvim_set_keymap('n', '<Leader><Leader>', ':<C-u>update<CR>', {noremap = true, silent = false})
@@ -64,3 +78,5 @@ api.nvim_set_keymap('n', 'q', 'v:lua.smart_close()'or "", {expr=true, noremap = 
 
 -- Easily edit .vimrc
 api.nvim_set_keymap('n', '[Space]ev', ':<C-u>edit $MYVIMRC<CR>', {noremap = true, silent =true})
+
+

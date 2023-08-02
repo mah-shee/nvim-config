@@ -2,7 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
     use { 'wbthomason/packer.nvim', opt = true }
-    use { 'vim-denops/denops.vim' }
+--    use { 'vim-denops/denops.vim' }
     use {
         'easymotion/vim-easymotion',
         config = function()
@@ -27,30 +27,9 @@ return require('packer').startup(function()
             vim.g.polyglot_disabled = {'markdown', 'tsx', 'typescript'}
         end,
     }
-    use {
-        'ayu-theme/ayu-vim',
-        config = function()
-            vim.cmd [[
-            set termguicolors
-            let ayucolor="dark"
-            autocmd ColorScheme * highlight Comment ctermfg=14 guifg=#8FA0B3
-            autocmd ColorScheme * highlight LineNr ctermfg=14 guifg=#8FA0B3
-            colorscheme ayu
-            highlight Normal ctermbg=NONE guibg=NONE
-            highlight NonText ctermbg=NONE guibg=NONE
-            highlight SpecialKey ctermbg=NONE guibg=NONE
-            highlight LineNr ctermbg=NONE guibg=NONE
-            highlight Folded ctermbg=NONE guibg=NONE
-            highlight EndOfBuffer ctermbg=NONE guibg=NONE
-            ]]
-        end,
-    }
-    use {
-        'Shougo/vimproc.vim',
-        run = function()
-            vim.cmd 'make'
-        end,
-    }
+	use { "bluz71/vim-moonfly-colors", as = "moonfly" }
+	use { 'xiyaowong/transparent.nvim'}
+
     use { 'hoob3rt/lualine.nvim' }
     use {
         'yggdroot/indentline',
@@ -64,41 +43,29 @@ return require('packer').startup(function()
             vim.cmd [[source ~/.config/nvim/plugins/fugitive.vim]]
         end,
     }
-    use {
-        'airblade/vim-gitgutter',
-        config = function()
-            vim.cmd [[source ~/.config/nvim/plugins/gitgutter.vim]]
-        end,
-    }
+
+	use { 'lewis6991/gitsigns.nvim' }
     use { 'nvim-treesitter/nvim-treesitter' }
     use { 'nvim-telescope/telescope.nvim' }
     use { 'nvim-lua/popup.nvim' }
     use { 'nvim-lua/plenary.nvim' }
-    use { 'whonore/Coqtail', ft = 'coq' }
-    use {
-        'skanehira/preview-uml.vim',
-        config = function()
-            vim.g.preview_uml_url='http://localhost:8888'
-        end,
-    }
-    use { 'Shougo/ddc.vim' }
-    use { 'Shougo/ddc-nvim-lsp' }
-    use { 'Shougo/ddc-matcher_head' }
-    use { 'Shougo/ddc-sorter_rank' }
-    use {
-        'matsui54/denops-signature_help',
-        requires = { 'Shougo/ddc.vim' },
-        config = function()
-            vim.cmd 'call signature_help#enable()'
-        end,
-    }
-    use {
-        'matsui54/denops-popup-preview.vim',
-        requires = { 'Shougo/ddc.vim' },
-        config = function()
-            vim.cmd 'call popup_preview#enable()'
-        end,
-    }
     use { 'simrat39/rust-tools.nvim' }
     use { 'puremourning/vimspector' }
+    use {
+        'rhysd/accelerated-jk',
+        config = function()
+            vim.api.nvim_set_keymap('n', 'j', '<Plug>(accelerated_jk_gj)', {silent = true})
+            vim.api.nvim_set_keymap('n', 'k', '<Plug>(accelerated_jk_gk)', {silent = true})
+        end,
+    }
+
+    use {
+        'tpope/vim-surround',
+        event = 'InsertEnter',
+    }
+
+    use {
+        'cohama/lexima.vim',
+        event = 'InsertEnter',
+    }
 end)

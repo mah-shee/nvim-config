@@ -3,7 +3,6 @@ require'nvim-treesitter.configs'.setup {
   -- インストールします。
   ensure_installed = {
     "rust",
-    "lua",
     "vim",
     "yaml",
     "toml",

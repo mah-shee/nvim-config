@@ -2,14 +2,24 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
     use { 'wbthomason/packer.nvim', opt = true }
---    use { 'vim-denops/denops.vim' }
-    use {
-        'easymotion/vim-easymotion',
-        config = function()
-            vim.cmd [[source ~/.config/nvim/plugins/easymotion.vim]]
-        end,
-    }
-    use { 'github/copilot.vim' }
+	use {
+		'phaazon/hop.nvim',
+		branch = 'v2', -- optional but strongly recommended
+	}
+	use {
+		"windwp/nvim-autopairs",
+		config = function() require("nvim-autopairs").setup {} end
+	}
+	use {
+		'j-hui/fidget.nvim',
+		tag = 'legacy',
+		config = function()
+			require("fidget").setup {
+				-- options
+			}
+		end,
+	}
+	use { 'github/copilot.vim' }
     use { 'neovim/nvim-lspconfig' }
     use { 'williamboman/mason.nvim' }
     use { 'williamboman/mason-lspconfig.nvim' }
@@ -20,23 +30,10 @@ return require('packer').startup(function()
     use { 'hrsh7th/cmp-buffer' }
     use { 'Shougo/context_filetype.vim' }
     use { 'Shougo/neosnippet-snippets' }
-    use { 'thinca/vim-themis' }
-    use {
-        'sheerun/vim-polyglot',
-        config = function()
-            vim.g.polyglot_disabled = {'markdown', 'tsx', 'typescript'}
-        end,
-    }
 	use { "bluz71/vim-moonfly-colors", as = "moonfly" }
 	use { 'xiyaowong/transparent.nvim'}
-
     use { 'hoob3rt/lualine.nvim' }
-    use {
-        'yggdroot/indentline',
-        config = function()
-            vim.g.indentline_char = '¦'
-        end,
-    }
+	use { "lukas-reineke/indent-blankline.nvim" }
     use {
         'tpope/vim-fugitive',
         config = function()
@@ -51,14 +48,7 @@ return require('packer').startup(function()
     use { 'nvim-lua/plenary.nvim' }
     use { 'simrat39/rust-tools.nvim' }
     use { 'puremourning/vimspector' }
-    use {
-        'rhysd/accelerated-jk',
-        config = function()
-            vim.api.nvim_set_keymap('n', 'j', '<Plug>(accelerated_jk_gj)', {silent = true})
-            vim.api.nvim_set_keymap('n', 'k', '<Plug>(accelerated_jk_gk)', {silent = true})
-        end,
-    }
-
+	use { 'rainbowhxch/accelerated-jk.nvim' }
     use {
         'tpope/vim-surround',
         event = 'InsertEnter',

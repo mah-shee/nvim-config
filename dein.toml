@@ -32,6 +32,15 @@ repo= 'hrsh7th/nvim-cmp'
 repo= 'hrsh7th/cmp-nvim-lsp'
 
 [[plugins]]
+repo= 'hrsh7th/cmp-path'
+
+[[plugins]]
+repo= 'hrsh7th/cmp-nvim-lsp-signature-help'
+
+[[plugins]]
+repo= 'hrsh7th/cmp-buffer'
+
+[[plugins]]
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
@@ -130,3 +139,9 @@ on_source = 'ddc.vim'
 hook_source = '''
 call popup_preview#enable()
 '''
+
+[[plugins]]
+repo = 'simrat39/rust-tools.nvim'
+
+[[plugins]]
+repo = 'puremourning/vimspector'

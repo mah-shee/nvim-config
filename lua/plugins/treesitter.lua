@@ -1,12 +1,23 @@
 require'nvim-treesitter.configs'.setup {
   -- 設定された言語のparserがインストールされていない場合、
   -- インストールします。
+  ensure_installed = {
+    "rust",
+    "lua",
+    "vim",
+    "yaml",
+    "toml",
+    "query",
+  },
+  sync_install = false,
+  auto_install = true,
   highlight = {
     -- `false` の場合、highlight機能を動かしません。
     enable = true,
 
     -- highlightの機能を無効にする、filetypeを指定します。
     disable = {},
+    additional_vim_regex_highlighting = false,
   },
 
   incremental_selection = {
@@ -35,7 +46,7 @@ require'nvim-treesitter.configs'.setup {
     -- `ip` や `ap` のようにtextobjectを選択します。
     select = {
       enable = true,
-     keymaps = {
+      keymaps = {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
@@ -118,9 +129,11 @@ require'nvim-treesitter.configs'.setup {
     -- カーソルが存在するスコープ全体をhighlightします。
     highlight_current_scope = { enable = true },
   },
-  
+
   -- 括弧の色をネストごとに変更します。
   rainbow = {
-    enable = true
+    enable = true,
+    extended_mode = true,
+    max_file_lines = nil,
   },
 } 

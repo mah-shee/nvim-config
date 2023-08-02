@@ -19,13 +19,12 @@ require('mason-lspconfig').setup_handlers({ function(server)
       vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
 
       vim.cmd [[
-        set updatetime=500
         highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
         highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
         highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
         augroup lsp_document_highlight
           autocmd! * <buffer>
-          autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+          -- autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
           autocmd CursorMoved,CursorMovedI <buffer> lua vim.lsp.buf.clear_references()
         augroup END
       ]]
@@ -33,7 +32,10 @@ require('mason-lspconfig').setup_handlers({ function(server)
     end,
     capabilities = require('cmp_nvim_lsp').default_capabilities(
       vim.lsp.protocol.make_client_capabilities()
-    )
+    ),
+    flags = {
+      debounce_text_changes = 150,
+    }
   }
   require('lspconfig')[server].setup(opt)
 end })
@@ -91,19 +93,39 @@ cmp.setup({
     end,
   },
   sources = {
-    { name = "nvim_lsp" },
-    -- { name = "buffer" },
-    -- { name = "path" },
+    { name = "nvim_lsp" , keyword_length = 3},
+    { name = "buffer" , keyword_length = 2},
+    { name = "path" },
+    { name = 'nvim_lsp_signature_help'},
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-p>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ['<C-l>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-e>'] = cmp.mapping.close(),
     ["<CR>"] = cmp.mapping.confirm { select = true },
+    ['<C-S-f>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
   }),
   experimental = {
     ghost_text = true,
+  },
+  window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+  },
+  formatting = {
+      fields = {'menu', 'abbr', 'kind'},
+      format = function(entry, item)
+          local menu_icon ={
+              nvim_lsp = 'λ',
+              vsnip = '⋗',
+              buffer = 'Ω',
+              path = '🖫',
+          }
+          item.menu = menu_icon[entry.source.name]
+          return item
+      end,
   },
 })
 
@@ -182,6 +204,9 @@ nvim_lsp.rust_analyzer.setup({
     filetypes = { "rust" };
     root_dir = nvim_lsp.util.root_pattern("Cargo.toml");
     on_attach=on_attach,
+    flags = {
+        debounce_text_changes = 150,
+    },
     settings = {
         ["rust-analyzer"] = {
             assist = {
@@ -193,6 +218,11 @@ nvim_lsp.rust_analyzer.setup({
             },
             procMacro = {
                 enable = true
+            },
+            inlayHints = {
+                lifetimeElisionHints = {
+                  enable = true 
+                },
             },
         }
     }
@@ -209,6 +239,26 @@ nvim_lsp.gopls.setup{ on_attach = on_attach;
         staticcheck = true,
       },
     },
+}
+nvim_lsp.sumneko_lua.setup{ on_attach = on_attach;
+  cmd = {"lua-language-server"};
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = {'vim'},
+      },
+      runtime = {
+        version = 'LuaJIT',
+        path = vim.split(package.path, ';'),
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+    },
+  },
 }
 function Goimports(timeout_ms)
   local context = { source = { organizeImports = true } }

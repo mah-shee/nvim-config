@@ -53,6 +53,9 @@ function _G.TerminalCommand()
 end
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true, silent = true})
 
+vim.api.nvim_exec([[
+  autocmd TermOpen * startinsert
+]], false)
 
 -- Useful save mappings.
 api.nvim_set_keymap('n', '<Leader><Leader>', ':<C-u>update<CR>', {noremap = true, silent = false})
@@ -80,3 +83,15 @@ api.nvim_set_keymap('n', 'q', 'v:lua.smart_close()'or "", {expr=true, noremap = 
 api.nvim_set_keymap('n', '[Space]ev', ':<C-u>edit $MYVIMRC<CR>', {noremap = true, silent =true})
 
 
+-- Vimspector
+vim.cmd([[
+nmap <F9> <cmd>call vimspector#Launch()<cr>
+nmap <F5> <cmd>call vimspector#StepOver()<cr>
+nmap <F8> <cmd>call vimspector#Reset()<cr>
+nmap <F11> <cmd>call vimspector#StepOver()<cr>")
+nmap <F12> <cmd>call vimspector#StepOut()<cr>")
+nmap <F10> <cmd>call vimspector#StepInto()<cr>")
+]])
+api.nvim_set_keymap('n', "Db", ":call vimspector#ToggleBreakpoint()<cr>", {noremap=true, silent=false})
+api.nvim_set_keymap('n', "Dw", ":call vimspector#AddWatch()<cr>", {noremap=true, silent=false})
+api.nvim_set_keymap('n', "De", ":call vimspector#Evaluate()<cr>", {noremap=true, silent=false})

@@ -1,5 +1,4 @@
 vim.cmd [[colorscheme moonfly]]
-vim.g.moonflyCursorColor = true
 
 require("transparent").setup({
   groups = { -- table: default groups

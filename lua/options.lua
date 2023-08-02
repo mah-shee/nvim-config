@@ -9,7 +9,7 @@ vim.o.expandtab=false
 vim.o.smarttab=true
 vim.o.shiftround=false
 vim.o.splitright=false
-vim.o.cursorline=false
+vim.o.cursorline=true
 -- vim.o.clipboard=unnamed
 vim.o.textwidth=0
 vim.wo.listchars='tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲'
@@ -49,3 +49,6 @@ vim.o.winheight=1
 vim.o.cmdwinheight=5
 vim.o.previewheight=8
 vim.o.helpheight=12
+
+vim.g.moonflyUnderlineMatchParen = true
+vim.g.moonflyVirtualTextColor = true

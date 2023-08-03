@@ -16,7 +16,7 @@ require('mason-lspconfig').setup_handlers({ function(server)
 		on_attach = function(client, bufnr)
 			local opts = { noremap=true, silent=true }
 			vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-			vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 1000)'
+			vim.cmd 'autocmd BufWritePre * lua vim.lsp.buf.format({async=true})'
 
 			vim.cmd [[
 		highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
@@ -150,10 +150,10 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '[Space]n', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 	buf_set_keymap('n', '[Space]e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 	buf_set_keymap('n', '[Space]q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-	buf_set_keymap("n", "[Space]f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	buf_set_keymap("n", "[Space]f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 	-- Set some keybinds conditional on server capabilities
 	if client.resolved_capabilities.document_formatting then
-		buf_set_keymap("n", "[Space]f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+		buf_set_keymap("n", "[Space]f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 	elseif client.resolved_capabilities.document_range_formatting then
 		buf_set_keymap("n", "[Space]f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 	end
@@ -221,7 +221,7 @@ nvim_lsp.rust_analyzer.setup({
 			},
 			inlayHints = {
 				lifetimeElisionHints = {
-					enable = true 
+					enable = true
 				},
 			},
 		}

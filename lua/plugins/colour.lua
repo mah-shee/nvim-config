@@ -1,4 +1,4 @@
-vim.cmd [[colorscheme moonfly]]
+vim.cmd [[colorscheme tokyonight-night]]
 
 require("transparent").setup({
   groups = { -- table: default groups

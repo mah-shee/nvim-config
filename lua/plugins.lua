@@ -30,20 +30,14 @@ return require('packer').startup(function()
     use { 'hrsh7th/cmp-buffer' }
     use { 'Shougo/context_filetype.vim' }
     use { 'Shougo/neosnippet-snippets' }
-	use { "bluz71/vim-moonfly-colors", as = "moonfly" }
+	use { "folke/tokyonight.nvim",}
 	use { 'xiyaowong/transparent.nvim'}
     use { 'hoob3rt/lualine.nvim' }
 	use { "lukas-reineke/indent-blankline.nvim" }
-    use {
-        'tpope/vim-fugitive',
-        config = function()
-            vim.cmd [[source ~/.config/nvim/plugins/fugitive.vim]]
-        end,
-    }
-
 	use { 'lewis6991/gitsigns.nvim' }
     use { 'nvim-treesitter/nvim-treesitter' }
     use { 'nvim-telescope/telescope.nvim' }
+	use { 'HiPhish/nvim-ts-rainbow2' }
     use { 'nvim-lua/popup.nvim' }
     use { 'nvim-lua/plenary.nvim' }
     use { 'simrat39/rust-tools.nvim' }
@@ -53,7 +47,6 @@ return require('packer').startup(function()
         'tpope/vim-surround',
         event = 'InsertEnter',
     }
-
     use {
         'cohama/lexima.vim',
         event = 'InsertEnter',

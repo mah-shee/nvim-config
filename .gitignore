@@ -3,3 +3,4 @@
 /profile.log
 /dein_api_token.vim
 .luarc.json
+/plugin/packer_compiled.lua

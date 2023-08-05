@@ -40,19 +40,6 @@ require('mason-lspconfig').setup_handlers({ function(server)
 	require('lspconfig')[server].setup(opt)
 end })
 
--- define an chain complete list
--- local chain_complete_list = {
---   default = {
---     {complete_items = {'lsp', 'snippet'}},
---     {complete_items = {'path'}, triggered_only = {'/'}},
---     {complete_items = {'buffers'}},
---   },
---   string = {
---     {complete_items = {'path'}, triggered_only = {'/'}},
---   },
---   comment = {},
--- }
-
 -- keyboard shortcut
 vim.keymap.set('n', '[Space]h',  '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', '[Space]f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
@@ -68,22 +55,11 @@ vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 -- LSP handlers
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false }
+	vim.lsp.diagnostic.on_publish_diagnostics, {
+		--    underline = false, -- Enable underline, use default values
+		virtual_text = true-- Enable virtual text only on Warning or above, override spacing to 2
+	}
 )
-
--- Reference highlight
--- vim.cmd [[
--- set updatetime=500
--- highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
--- highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
--- highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
--- augroup lsp_document_highlight
---   autocmd!
---   autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
---   autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
--- augroup END
--- ]]
-
 -- 3. completion (hrsh7th/nvim-cmp)
 local cmp = require("cmp")
 cmp.setup({
@@ -157,47 +133,7 @@ local on_attach = function(client, bufnr)
 	elseif client.resolved_capabilities.document_range_formatting then
 		buf_set_keymap("n", "[Space]f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
 	end
-
-	-- passing in a table with on_attach function
-	--   require'completion'.on_attach({
-	--       sorting = 'alphabet',
-	--       matching_strategy_list = {'exact', 'fuzzy'},
-	--       chain_complete_list = chain_complete_list,
-	--     })
-	-- Set autocommands conditional on server_capabilities
-	-- if client.resolved_capabilities.document_highlight then
-	-- vim.api.nvim_exec([[
-	--   hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-	--   hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-	--   hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-	--   augroup lsp_document_highlight
-	--     autocmd! * <buffer>
-	--     autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-	--     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-	--   augroup END
-	-- ]], false)
-	-- end
 end
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-	vim.lsp.diagnostic.on_publish_diagnostics, {
-		--    underline = false, -- Enable underline, use default values
-		--    virtual_text = false -- Enable virtual text only on Warning or above, override spacing to 2
-	}
-)
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
--- local servers = { "pyright", "tsserver"}
--- for _, lsp in ipairs(servers) do
---   nvim_lsp[lsp].setup { on_attach = on_attach }
--- end
-
--- nvim_lsp.rls.setup{
---   cmd = {"rustup", "run", "nightly", "rls"};
---   filetypes = { "rust" };
---   root_dir = nvim_lsp.util.root_pattern("Cargo.toml");
---   on_attach = on_attach;
--- }
 
 nvim_lsp.rust_analyzer.setup({
 	cmd = {"rustup", "run", "nightly", "rust-analyzer"};

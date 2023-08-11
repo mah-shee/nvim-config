@@ -2,6 +2,7 @@ return {
 	{
 		'nvim-telescope/telescope.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' },
+		tag = '0.1.2',
 		keys = {
 			{'/', ':Telescope live_grep<CR>'}
 		},
@@ -27,7 +28,6 @@ return {
 					file_sorter =  require'telescope.sorters'.get_fuzzy_file,
 					file_ignore_patterns = {},
 					generic_sorter =  require'telescope.sorters'.get_generic_fuzy_sorter,
-					path_display= true,
 					winblend = 0,
 					border = {},
 					borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },

@@ -4,7 +4,7 @@ return {
 		dependencies = {
 			'nvim-tree/nvim-web-devicons'
 		},
-		kets = {
+		keys = {
 			{ '<C-n>', ':NvimTreeToggle<CR>' },
 			{ '<C-j>', ':NvimTreeFindFile<CR>' },
 		},

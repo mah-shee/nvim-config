@@ -94,6 +94,7 @@ return {
 						workspace = {
 							-- Make the server aware of Neovim runtime files
 							library = vim.api.nvim_get_runtime_file("", true),
+							checkThirdParty = false, -- THIS IS THE IMPORTANT LINE TO ADD
 						},
 						-- Do not send telemetry data containing a randomized but unique identifier
 						telemetry = {
@@ -104,7 +105,6 @@ return {
 			}
 
 			vim.keymap.set('n', '[Space]a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-			vim.keymap.set('n', '[Space]e', '<cmd>lua vim.diagnostic.open_float()<CR>')
 			vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 			vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 			-- LSP handlers

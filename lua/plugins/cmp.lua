@@ -7,6 +7,7 @@ return {
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-nvim-lsp-signature-help',
+			"zbirenbaum/copilot-cmp",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -21,6 +22,7 @@ return {
 					{ name = "buffer" , keyword_length = 2},
 					{ name = "path" },
 					{ name = 'nvim_lsp_signature_help'},
+					{ name = "copilot", group_index = 2 },
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -46,11 +48,38 @@ return {
 							vsnip = '⋗',
 							buffer = 'Ω',
 							path = '🖫',
+							Copilot = "",
 						}
 						item.menu = menu_icon[entry.source.name]
 						return item
 					end,
 				},
+			})
+		end
+	},
+	{
+		'hrsh7th/cmp-nvim-lsp',
+		event = 'InsertEnter',
+	},
+	{
+		'hrsh7th/cmp-buffer',
+		event = 'InsertEnter',
+	},
+	{
+		'hrsh7th/cmp-path',
+		event = 'InsertEnter',
+	},
+	{
+		'hrsh7th/cmp-nvim-lsp-signature-help',
+		event = 'InsertEnter',
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		event = 'InsertEnter',
+		config = function ()
+			require("copilot_cmp").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
 			})
 		end
 	},

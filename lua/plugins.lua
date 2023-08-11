@@ -8,17 +8,18 @@ return require('packer').startup(function()
 	}
 	use {
 		"windwp/nvim-autopairs",
-		config = function() require("nvim-autopairs").setup {} end
 	}
 	use {
 		'j-hui/fidget.nvim',
 		tag = 'legacy',
-		config = function()
-			require("fidget").setup {
-				-- options
-			}
-		end,
 	}
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons'
+		},
+	}
+	use { 'nvim-tree/nvim-web-devicons' }
 	use { 'github/copilot.vim' }
     use { 'neovim/nvim-lspconfig' }
     use { 'williamboman/mason.nvim' }

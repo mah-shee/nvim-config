@@ -12,8 +12,4 @@ local vars = {
 for var, val in pairs(vars) do
 	api.nvim_set_var(var, val)
 end
-
-require('config.autocmds')
-require('config.keymaps')
-require('config.options')
-require('config.lazy')
+require('config')

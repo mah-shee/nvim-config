@@ -31,8 +31,14 @@ return {
 		'github/copilot.vim',
 		event = 'InsertEnter',
 	},
-	'nvim-tree/nvim-web-devicons',
-	'HiPhish/nvim-ts-rainbow2',
+	{
+		'nvim-tree/nvim-web-devicons',
+		lazy = true
+	},
+	{
+		'HiPhish/nvim-ts-rainbow2',
+		lazy = true
+	},
 	'nvim-lua/popup.nvim',
 	'nvim-lua/plenary.nvim',
 	'puremourning/vimspector',

@@ -4,9 +4,9 @@ return {
 		dependencies = {
 			'nvim-tree/nvim-web-devicons'
 		},
-		kety = {
-			{'<C-n>', ':NvimTreeToggle<CR>'},
-			{'<C-j>', ':NvimTreeFindFile<CR>'},
+		kets = {
+			{ '<C-n>', ':NvimTreeToggle<CR>' },
+			{ '<C-j>', ':NvimTreeFindFile<CR>' },
 		},
 		config = function()
 			require("nvim-tree").setup()

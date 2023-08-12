@@ -1,11 +1,13 @@
 local api = vim.api
 
+-- Use ',' instead of '\'.
 vim.g.mapleader = ","
+-- Use <Leader> in global plugin.
+-- Use <LocalLeader> in filetype plugin.
+vim.g.maplocalleader = 'm'
+
 api.nvim_set_keymap('i', 'jj', '<Esc>', {noremap = true, silent = false})
 -- api.nvim_set_keymap('t', '<Esc>', '<C-\><C-n>', {noremap = true, silent = false})
-vim.cmd('autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %')
--- for deoplete to leave the preview window always closed
-vim.cmd('autocmd InsertLeave * set nopaste')
 
 -- Insert mode keymappings:
 api.nvim_set_keymap('i', '<C-t>', '<C-v><TAB>', {noremap=true, silent=true})
@@ -13,10 +15,6 @@ api.nvim_set_keymap('i', '<C-t>', '<C-v><TAB>', {noremap=true, silent=true})
 api.nvim_set_keymap('i', '<C-w>', '<C-g><C-w>', {noremap=true, silent=true})
 api.nvim_set_keymap('i', '<C-u>', '<C-g><C-u>', {noremap=true, silent=true})
 
--- Use ',' instead of '\'.
--- Use <Leader> in global plugin.
--- Use <LocalLeader> in filetype plugin.
-vim.g.maplocalleader = 'm'
 
 -- Release keymappings for plug-in.
 api.nvim_set_keymap('n', ';', '<Nop>', {noremap = true, silent = false})

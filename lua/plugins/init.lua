@@ -2,14 +2,14 @@ return {
 	{
 		'j-hui/fidget.nvim',
 		tag = 'legacy',
+		event = "LspAttach",
 	},
 	{
-		'tpope/vim-surround',
-		event = 'InsertEnter',
-	},
-	{
-		'windwp/nvim-autopairs',
-		event = 'InsertEnter',
+		"kylechui/nvim-surround",
+		event = "InsertEnter",
+		config = function()
+			require("nvim-surround").setup()
+		end
 	},
 	{
 		"zbirenbaum/copilot.lua",
@@ -17,6 +17,13 @@ return {
 		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({})
+		end,
+	},
+	{
+		'echasnovski/mini.nvim',
+		event = 'InsertEnter',
+		config = function()
+			require("mini.pairs").setup()
 		end,
 	},
 	'nvim-tree/nvim-web-devicons',

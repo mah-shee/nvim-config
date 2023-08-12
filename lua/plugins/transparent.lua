@@ -1,7 +1,7 @@
 return {
 	{
 		'xiyaowong/transparent.nvim',
-		event = {'BufNewFile', 'BufRead'},
+		cmd = {'TransparentToggle', 'TransparentEnable', 'TransparentDisable'},
 		config = function()
 			require("transparent").setup({
 				groups = { -- table: default groups

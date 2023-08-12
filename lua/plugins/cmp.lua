@@ -9,20 +9,15 @@ return {
 			'hrsh7th/cmp-nvim-lsp-signature-help',
 			"zbirenbaum/copilot-cmp",
 		},
-		config = function()
+		opts = function()
+			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 			local cmp = require("cmp")
-			cmp.setup({
+			local defaults = require("cmp.config.default")()
+			return {
 				snippet = {
 					expand = function(args)
 						vim.fn["vsnip#anonymous"](args.body)
 					end,
-				},
-				sources = {
-					{ name = "nvim_lsp" , keyword_length = 3},
-					{ name = "buffer" , keyword_length = 2},
-					{ name = "path" },
-					{ name = 'nvim_lsp_signature_help'},
-					{ name = "copilot", group_index = 2 },
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -33,12 +28,12 @@ return {
 					['<C-S-f>'] = cmp.mapping.scroll_docs(-4),
 					['<C-f>'] = cmp.mapping.scroll_docs(4),
 				}),
-				experimental = {
-					ghost_text = true,
-				},
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+				sources = {
+					{ name = "nvim_lsp" , keyword_length = 3},
+					{ name = "buffer" , keyword_length = 2},
+					{ name = "path" },
+					{ name = 'nvim_lsp_signature_help'},
+					{ name = "copilot", group_index = 2 },
 				},
 				formatting = {
 					fields = {'menu', 'abbr', 'kind'},
@@ -54,28 +49,33 @@ return {
 						return item
 					end,
 				},
-			})
-		end
+				experimental = {
+					ghost_text = {
+						hl_group = "CmpGhostText",
+					},
+				},
+				sorting = defaults.sorting,
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
+			}
+		end,
 	},
 	{
 		'hrsh7th/cmp-nvim-lsp',
-		event = 'InsertEnter',
 	},
 	{
 		'hrsh7th/cmp-buffer',
-		event = 'InsertEnter',
 	},
 	{
 		'hrsh7th/cmp-path',
-		event = 'InsertEnter',
 	},
 	{
 		'hrsh7th/cmp-nvim-lsp-signature-help',
-		event = 'InsertEnter',
 	},
 	{
 		"zbirenbaum/copilot-cmp",
-		event = 'InsertEnter',
 		config = function ()
 			require("copilot_cmp").setup({
 				suggestion = { enabled = false },

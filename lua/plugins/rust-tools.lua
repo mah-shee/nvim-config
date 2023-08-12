@@ -1,10 +1,9 @@
 return {
 	{
 		'simrat39/rust-tools.nvim',
-        event = 'InsertEnter',
+		ft = 'rust',
 		cnofig = function()
 			local rt = require("rust-tools")
-
 			rt.setup({
 				server = {
 					on_attach = function(_, bufnr)

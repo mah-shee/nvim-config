@@ -79,9 +79,6 @@ end
 
 api.nvim_set_keymap('n', 'q', 'v:lua.smart_close()'or "", {expr=true, noremap = true})
 
--- Easily edit .vimrc
-api.nvim_set_keymap('n', '[Space]ev', ':<C-u>edit $MYVIMRC<CR>', {noremap = true, silent =true})
-
 
 -- Vimspector
 vim.cmd([[

@@ -12,14 +12,15 @@ return {
 			local on_attach = function(client, bufnr)
 				local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 				local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
 			end
 
+
+
 			nvim_lsp.rust_analyzer.setup({
-				cmd = {"rustup", "run", "nightly", "rust-analyzer"};
-				filetypes = { "rust" };
-				root_dir = nvim_lsp.util.root_pattern("Cargo.toml");
-				on_attach=on_attach,
+				cmd = { "rustup", "run", "nightly", "rust-analyzer" },
+				filetypes = { "rust" },
+				root_dir = nvim_lsp.util.root_pattern("Cargo.toml"),
+				on_attach = on_attach,
 				flags = {
 					debounce_text_changes = 150,
 				},
@@ -44,9 +45,9 @@ return {
 				}
 			})
 
-			nvim_lsp.gopls.setup{ on_attach = on_attach;
-				root_dir = nvim_lsp.util.root_pattern('go.mod');
-				cmd = {"gopls", "serve"};
+			nvim_lsp.gopls.setup { on_attach = on_attach,
+				root_dir = nvim_lsp.util.root_pattern('go.mod'),
+				cmd = { "gopls", "serve" },
 				settings = {
 					gopls = {
 						analyses = {
@@ -65,7 +66,7 @@ return {
 						},
 						diagnostics = {
 							-- Get the language server to recognize the `vim` global
-							globals = {'vim'},
+							globals = { 'vim' },
 						},
 						workspace = {
 							-- Make the server aware of Neovim runtime files
@@ -84,7 +85,7 @@ return {
 			vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 				vim.lsp.diagnostic.on_publish_diagnostics, {
 					--    underline = false, -- Enable underline, use default values
-					virtual_text = true-- Enable virtual text only on Warning or above, override spacing to 2
+					virtual_text = true -- Enable virtual text only on Warning or above, override spacing to 2
 				}
 			)
 		end

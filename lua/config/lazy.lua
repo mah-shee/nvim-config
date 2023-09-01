@@ -12,33 +12,38 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	spec = {
-		{ import = "plugins" },
-	},
-	defaults = {
-		lazy = true,
-		version = false, -- always use the latest git commit
-	},
-	install = { colorscheme = { "tokyonight", "habamax" } },
-	checker = { enabled = true }, -- automatically check for plugin updates
-	change_detection = {
-		enabled = false,
-		notify = true, -- get a notification when changes are found
-	},
-	performance = {
-		rtp = {
-			-- disable some rtp plugins
-			disabled_plugins = {
-				"gzip",
-				"matchit",
-				"matchparen",
-				"netrwPlugin",
-				"tarPlugin",
-				"tohtml",
-				"tutor",
-				"zipPlugin",
+require("lazy").setup(
+	{
+		import = "plugins",
+		defaults = {
+			lazy = true,
+			version = false, -- always use the latest git commit
+		},
+		install = { colorscheme = { "tokyonight" } },
+		checker = { enabled = false }, -- automatically check for plugin updates
+		change_detection = {
+			enabled = false,
+			notify = false, -- get a notification when changes are found
+		},
+
+		performance = {
+			cache = {
+				enabled = true,
+			},
+			rtp = {
+
+				-- disable some rtp plugins
+				disabled_plugins = {
+					-- 	"gzip",
+					"matchit",
+					"matchparen",
+					-- 	"netrwPlugin",
+					-- 	"tarPlugin",
+					-- 	"tohtml",
+					-- 	"tutor",
+					-- 	"zipPlugin",
+				},
 			},
 		},
-	},
-})
+	}
+)

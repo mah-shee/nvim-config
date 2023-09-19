@@ -5,6 +5,12 @@ return {
 		dependencies = {
 			'williamboman/mason-lspconfig.nvim',
 			'williamboman/mason.nvim',
+			'lvimuser/lsp-inlayhints.nvim',
+		},
+		opts = {
+			inlay_hints = {
+				enabled =true,
+			}
 		},
 		config = function()
 			local nvim_lsp = require('lspconfig')

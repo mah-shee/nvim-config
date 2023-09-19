@@ -33,6 +33,8 @@ vim.o.winheight = 1
 vim.o.cmdwinheight = 5
 vim.o.previewheight = 8
 vim.o.helpheight = 12
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 -- Vimspector options
 vim.cmd([[
 let g:vimspector_sidebar_width = 85

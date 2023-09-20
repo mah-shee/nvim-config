@@ -9,7 +9,7 @@ return {
 		},
 		opts = {
 			inlay_hints = {
-				enabled =true,
+				enabled = true,
 			}
 		},
 		config = function()
@@ -18,10 +18,20 @@ return {
 			local on_attach = function(client, bufnr)
 				local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 				local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+				vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
+
+				vim.api.nvim_create_autocmd("InsertEnter", {
+					buffer = bufnr,
+					callback = function() vim.lsp.buf.inlay_hint(bufnr, true) end,
+					group = "lsp_augroup",
+				})
+				vim.api.nvim_create_autocmd("InsertLeave", {
+					buffer = bufnr,
+					callback = function() vim.lsp.buf.inlay_hint(bufnr, false) end,
+					group = "lsp_augroup",
+				})
 			end
-
-
-
 			nvim_lsp.rust_analyzer.setup({
 				cmd = { "rustup", "run", "nightly", "rust-analyzer" },
 				filetypes = { "rust" },
@@ -82,6 +92,9 @@ return {
 						-- Do not send telemetry data containing a randomized but unique identifier
 						telemetry = {
 							enable = false,
+						},
+						hint = {
+							enable = true,
 						},
 					},
 				},

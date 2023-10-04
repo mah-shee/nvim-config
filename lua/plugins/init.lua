@@ -3,6 +3,9 @@ return {
 		'j-hui/fidget.nvim',
 		tag = 'legacy',
 		event = "LspAttach",
+		config = function()
+			require"fidget".setup{}
+		end
 	},
 	{
 		"kylechui/nvim-surround",
@@ -16,7 +19,7 @@ return {
 		cmd = "Copilot",
 		event = "InsertEnter",
 		config = function()
-			require("copilot").setup({})
+			require("copilot").setup()
 		end,
 	},
 	{
@@ -27,8 +30,8 @@ return {
 		end,
 	},
 	'nvim-tree/nvim-web-devicons',
-	'HiPhish/nvim-ts-rainbow2',
 	'nvim-lua/popup.nvim',
 	'nvim-lua/plenary.nvim',
 	'puremourning/vimspector',
+	'neovim/nvim-lspconfig',
 }

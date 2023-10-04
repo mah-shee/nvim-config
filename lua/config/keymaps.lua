@@ -128,5 +128,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', '[Space]f', function()
 			vim.lsp.buf.format { async = false }
 		end, opts)
+
+		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+			vim.lsp.handlers.hover,
+			{
+				border = "single", -- "shadow" , "none", "rounded"
+			}
+		)
+
+		vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+			vim.lsp.diagnostic.on_publish_diagnostics, {
+				--    underline = false, -- Enable underline, use default values
+				virtual_text = true -- Enable virtual text only on Warning or above, override spacing to 2
+			}
+		)
 	end,
 })
+
+if vim.lsp.inlay_hint then
+	vim.keymap.set('n', '<leader>h', function()
+		vim.lsp.inlay_hint(0, nil)
+	end, { desc = 'Toggle Inlay Hints' })
+end

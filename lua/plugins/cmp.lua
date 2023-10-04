@@ -11,11 +11,12 @@ return {
 			'hrsh7th/cmp-vsnip',
 			'hrsh7th/vim-vsnip',
 		},
-		opts = function()
+		config = function()
 			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 			local cmp = require("cmp")
 			local defaults = require("cmp.config.default")()
-			return {
+
+			cmp.setup({
 				snippet = {
 					expand = function(args)
 						vim.fn["vsnip#anonymous"](args.body)
@@ -31,12 +32,12 @@ return {
 					['<C-f>'] = cmp.mapping.scroll_docs(4),
 				}),
 				sources = {
-					{ name = "nvim_lsp",               keyword_length = 3 },
-					{ name = "buffer",                 keyword_length = 2 },
+					{ name = "nvim_lsp", keyword_length = 2 },
+					{ name = "buffer", keyword_length = 2 },
 					{ name = "path" },
 					{ name = 'nvim_lsp_signature_help' },
 					{ name = 'vsnip' },
-					{ name = "copilot",                group_index = 2 },
+					{ name = "copilot",},
 				},
 				formatting = {
 					fields = { 'menu', 'abbr', 'kind' },
@@ -66,7 +67,7 @@ return {
 						border = 'single',
 					}),
 				},
-			}
+			})
 		end,
 	},
 	{

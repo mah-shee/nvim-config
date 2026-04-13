@@ -1,7 +1,6 @@
 return {
 	{
-		'phaazon/hop.nvim',
-		branch = 'v2', -- optional but strongly recommended
+		'smoka7/hop.nvim',
 		keys = {
 			{'<Leader>l', "<cmd>lua require'hop'.hint_words()<cr>"},
 			{'<Leader>w', "<cmd>lua require'hop'.hint_patterns()<cr>"},
@@ -14,8 +13,5 @@ return {
 		opts = {
 			keys = 'etovxqpdygfblzhckisuran'
 		},
-		config = function()
-			require('hop').setup()
-		end
 	},
 }

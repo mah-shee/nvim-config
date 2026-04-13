@@ -13,9 +13,5 @@ return {
 			acceleration_table = { 3,6,9,12,15,18,21,24,27,30 },
 			deceleration_table = { {150, 9999} }
 		},
-		config = function()
-			require('accelerated-jk').setup()
-		end
-
 	}
 }

@@ -40,9 +40,6 @@ return {
 				row = 0,
 				col = 1
 			},
-			yadm = {
-				enable = false
-			},
 			on_attach = function(bufnr)
 				local gs = package.loaded.gitsigns
 
@@ -84,8 +81,5 @@ return {
 				map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 			end
 		},
-		config = function()
-			require('gitsigns').setup()
-		end,
 	},
 }

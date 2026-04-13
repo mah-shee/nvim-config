@@ -7,9 +7,17 @@ return {
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-nvim-lsp-signature-help',
-			'zbirenbaum/copilot-cmp',
-			'hrsh7th/cmp-vsnip',
-			'hrsh7th/vim-vsnip',
+			{
+				"zbirenbaum/copilot-cmp",
+				config = function()
+					require("copilot_cmp").setup()
+				end
+			},
+			'saadparwaiz1/cmp_luasnip',
+			{
+				'L3MON4D3/LuaSnip',
+				version = "v2.*",
+			},
 		},
 		config = function()
 			vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -19,7 +27,7 @@ return {
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						vim.fn["vsnip#anonymous"](args.body)
+						require('luasnip').lsp_expand(args.body)
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
@@ -36,18 +44,18 @@ return {
 					{ name = "buffer", keyword_length = 2 },
 					{ name = "path" },
 					{ name = 'nvim_lsp_signature_help' },
-					{ name = 'vsnip' },
-					{ name = "copilot",},
+					{ name = 'luasnip' },
+					{ name = "copilot" },
 				},
 				formatting = {
 					fields = { 'menu', 'abbr', 'kind' },
 					format = function(entry, item)
 						local menu_icon = {
 							nvim_lsp = 'λ',
-							vsnip = '⋗',
+							luasnip = '⋗',
 							buffer = 'Ω',
 							path = '🖫',
-							Copilot = "",
+							copilot = "",
 						}
 						item.menu = menu_icon[entry.source.name]
 						return item
@@ -69,34 +77,5 @@ return {
 				},
 			})
 		end,
-	},
-	{
-		'hrsh7th/cmp-nvim-lsp',
-	},
-	{
-		'hrsh7th/cmp-buffer',
-	},
-	{
-		'hrsh7th/cmp-path',
-	},
-	{
-		'hrsh7th/cmp-nvim-lsp-signature-help',
-	},
-	{
-		'hrsh7th/cmp-vsnip'
-
-	},
-	{
-		'hrsh7th/vim-vsnip'
-
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		config = function()
-			require("copilot_cmp").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
-		end
 	},
 }

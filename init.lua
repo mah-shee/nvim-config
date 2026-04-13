@@ -1,8 +1,6 @@
 local api = vim.api
 
-vim.cmd('augroup MyAutoCmd')
-vim.cmd('autocmd!')
-vim.cmd('augroup END')
+vim.api.nvim_create_augroup('MyAutoCmd', { clear = true })
 
 local vars = {
 	python_host_prog = '/Users/masa/.pyenv/shims/python',

@@ -1,7 +1,6 @@
 return {
 	{
 		'j-hui/fidget.nvim',
-		tag = 'legacy',
 		event = "LspAttach",
 		config = function()
 			require"fidget".setup{}
@@ -19,7 +18,10 @@ return {
 		cmd = "Copilot",
 		event = "InsertEnter",
 		config = function()
-			require("copilot").setup()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
 		end,
 	},
 	{
@@ -29,9 +31,11 @@ return {
 			require("mini.pairs").setup()
 		end,
 	},
-	'nvim-tree/nvim-web-devicons',
-	'nvim-lua/popup.nvim',
-	'nvim-lua/plenary.nvim',
-	'puremourning/vimspector',
-	'neovim/nvim-lspconfig',
+	{
+		'puremourning/vimspector',
+		cmd = { 'VimspectorReset', 'VimspectorLaunch' },
+		keys = {
+			{ '<F9>' },
+		},
+	},
 }

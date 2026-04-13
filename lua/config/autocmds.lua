@@ -1,23 +1,27 @@
-vim.cmd([[
-autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
-]])
+local augroup = vim.api.nvim_create_augroup("UserAutoCmds", { clear = true })
 
-vim.cmd('autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %')
--- for deoplete to leave the preview window always closed
-vim.cmd('autocmd InsertLeave * set nopaste')
-
---[[
-vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = "LspAttach_inlayhints",
-  callback = function(args)
-    if not (args.data and args.data.client_id) then
-      return
-    end
-
-    local bufnr = args.buf
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    require("lsp-inlayhints").on_attach(client, bufnr)
-  end,
+vim.api.nvim_create_autocmd("CursorHold", {
+	group = augroup,
+	callback = function()
+		-- Insertモードやコマンドラインでは表示しない
+		local mode = vim.api.nvim_get_mode().mode
+		if mode == 'n' then
+			vim.diagnostic.open_float(nil, { focusable = false })
+		end
+	end,
 })
-]]
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	group = augroup,
+	pattern = "*.py",
+	callback = function()
+		vim.keymap.set('n', '<C-e>', ':!python %<CR>', { buffer = true })
+	end,
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+	group = augroup,
+	callback = function()
+		vim.o.paste = false
+	end,
+})

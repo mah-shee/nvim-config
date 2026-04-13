@@ -85,9 +85,9 @@ vim.cmd([[
 nmap <F9> <cmd>call vimspector#Launch()<cr>
 nmap <F5> <cmd>call vimspector#StepOver()<cr>
 nmap <F8> <cmd>call vimspector#Reset()<cr>
-nmap <F11> <cmd>call vimspector#StepOver()<cr>")
-nmap <F12> <cmd>call vimspector#StepOut()<cr>")
-nmap <F10> <cmd>call vimspector#StepInto()<cr>")
+nmap <F11> <cmd>call vimspector#StepOver()<cr>
+nmap <F12> <cmd>call vimspector#StepOut()<cr>
+nmap <F10> <cmd>call vimspector#StepInto()<cr>
 ]])
 api.nvim_set_keymap('n', "Db", ":call vimspector#ToggleBreakpoint()<cr>", { noremap = true, silent = false })
 api.nvim_set_keymap('n', "Dw", ":call vimspector#AddWatch()<cr>", { noremap = true, silent = false })
@@ -99,6 +99,13 @@ vim.keymap.set('n', '[Space]e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '[Space]q', vim.diagnostic.setloclist)
+
+-- Global diagnostic configuration
+vim.diagnostic.config({
+	virtual_text = true,
+	update_in_insert = false, -- Insertモード中はdiagnostics更新しない
+	severity_sort = true, -- 重要度順にソート
+})
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -126,27 +133,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set({ 'n', 'v' }, '[Space]a', vim.lsp.buf.code_action, opts)
 		vim.keymap.set('n', '[Space]n', vim.lsp.buf.references, opts)
 		vim.keymap.set('n', '[Space]f', function()
-			vim.lsp.buf.format { async = false }
+			vim.lsp.buf.format { async = true }
 		end, opts)
 
-		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-			vim.lsp.handlers.hover,
-			{
-				border = "single", -- "shadow" , "none", "rounded"
-			}
-		)
-
-		vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-			vim.lsp.diagnostic.on_publish_diagnostics, {
-				--    underline = false, -- Enable underline, use default values
-				virtual_text = true -- Enable virtual text only on Warning or above, override spacing to 2
-			}
-		)
+		-- Inlay hintsをサーバー初期化完了後に遅延有効化（UIブロック防止）
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if client and client:supports_method('textDocument/inlayHint') then
+			vim.defer_fn(function()
+				if vim.api.nvim_buf_is_valid(ev.buf) then
+					vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+				end
+			end, 500)
+		end
 	end,
 })
 
 if vim.lsp.inlay_hint then
 	vim.keymap.set('n', '<leader>h', function()
-		vim.lsp.inlay_hint(0, nil)
+		vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 	end, { desc = 'Toggle Inlay Hints' })
 end

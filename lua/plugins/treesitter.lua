@@ -23,6 +23,7 @@ return {
 			indent = { enable = true },
 			ensure_installed = {
 				"rust",
+				"dart",
 			},
 			incremental_selection = {
 				enable = true,
